@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+
+        'traitor' => [
+            'driver' => 'session',
+            'provider' => 'traitors',
+        ],
     ],
 
     /*
@@ -69,10 +74,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        
+
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+        'traitors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Traitor::class,
         ],
 
         // 'users' => [
@@ -103,6 +113,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'traitors' => [
+            'provider' => 'traitors',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
