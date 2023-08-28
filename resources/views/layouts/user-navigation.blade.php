@@ -21,7 +21,7 @@
             <!-- Navigation Links -->
             <div class="flex item-center">
                 <x-nav-link :href="route('home.index')">
-                    {{ __('Traiteur local') }}
+                    <img class="w-24" src="{{ asset('img/logo-old.jpg') }}" alt="">
                 </x-nav-link>
             </div>
 
