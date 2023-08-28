@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
 use App\Models\Traitor;
+use App\Mail\TraitorDenied;
+use App\Mail\TraitorAllowed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TraitorController extends Controller
 {
@@ -70,7 +74,8 @@ class TraitorController extends Controller
         $traitor->status = 'allowed';
         $traitor->message = $request->message;
         $traitor->save();
-        // Mail::to($traitor->email)->send(new TraitorAllowed($traitor));
+        Mail::to($traitor->email)->send(new TraitorAllowed($traitor));
+        Alert::toast('Traiteur confirmé', 'success');
         return redirect()->route('admin.traitors.index');
     }
 
@@ -80,7 +85,8 @@ class TraitorController extends Controller
         $traitor->status = 'denied';
         $traitor->message = $request->message;
         $traitor->save();
-        // Mail::to($traitor->email)->send(new TraitorDenied($traitor));
+        Mail::to($traitor->email)->send(new TraitorDenied($traitor));
+        Alert::toast('Traiteur refusé', 'error');
         return redirect()->route('admin.traitors.index');
     }
 
@@ -90,10 +96,10 @@ class TraitorController extends Controller
 
         try {
             $traitor = $traitor->delete();
-            // Alert::success('Opération effectuée', 'Suppression éffectué');
+            Alert::success('Opération effectuée', 'Suppression éffectué');
             return redirect(url()->previous());
         } catch (\Exception $e) {
-            // Alert::error('Erreur', 'Element introuvable');
+            Alert::error('Erreur', 'Element introuvable');
             return redirect()->back();
         }
     }

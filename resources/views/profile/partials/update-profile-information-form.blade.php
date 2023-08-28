@@ -45,6 +45,24 @@
                     @endif
                 </div>
             @endif
+        </div>        
+
+        <div>
+            <x-input-label for="city" :value="__('Ville')" />
+            <x-text-input id="city" name="city" type="text" class="mt-1 block w-full" :value="old('city', $user->city)" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('city')" />
+        </div>    
+
+        <div>
+            <x-input-label for="address" :value="__('Adresse')" />
+            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="old('address', $user->address)" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
+        </div>  
+
+        <div>
+            <x-input-label for="postal" :value="__('Postal')" />
+            <x-text-input id="postal" name="postal" type="text" class="mt-1 block w-full" :value="old('postal', $user->postal)" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('postal')" />
         </div>
 
         <div class="flex items-center gap-4">

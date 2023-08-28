@@ -76,7 +76,7 @@
                                 @foreach (Auth::user()->unreadNotifications as $notification)
                                     <x-dropdown-link>
                                         <p class="text-sm">
-                                            {{ json_decode($notification->data, true)['data'] }}
+                                            {{ $notification->data['data'] }}
                                         </p>
 
                                         <p class="text-xs">{{ getFormattedDateTime($notification->created_at) }}</p>
@@ -86,17 +86,17 @@
                                 @foreach (Auth::guard('admin')->user()->unreadNotifications as $notification)
                                     <x-dropdown-link>
                                         <p class="text-sm">
-                                            {{ json_decode($notification->data, true)['data'] }}
+                                            {{ $notification->data['data'] }}
                                         </p>
 
                                         <p class="text-xs">{{ getFormattedDateTime($notification->created_at) }}</p>
                                     </x-dropdown-link>
                                 @endforeach
                             @elseif (Auth::guard('traitor')->user() !== null)
-                                @foreach (Auth::guard('admin')->user()->unreadNotifications as $notification)
+                                @foreach (Auth::guard('traitor')->user()->unreadNotifications as $notification)
                                     <x-dropdown-link>
                                         <p class="text-sm">
-                                            {{ json_decode($notification->data, true)['data'] }}
+                                            {{ $notification->data['data'] }}
                                         </p>
 
                                         <p class="text-xs">{{ getFormattedDateTime($notification->created_at) }}</p>
@@ -131,18 +131,29 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                {{ __('Profil') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST"
+                                @if (Auth::guard('admin')->user() !== null) action="{{ route('logout.admin') }}"
+                                @elseif (Auth::guard('traitor')->user() !== null) action="{{ route('logout.traitor') }}" @endif>
                                 @csrf
 
-                                <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
+                                @if (Auth::guard('admin')->user() !== null)
+                                    <x-dropdown-link :href="route('logout.admin')"
+                                        onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                        {{ __('Se déconnecter') }}
+                                    </x-dropdown-link>
+                                @elseif (Auth::guard('traitor')->user() !== null)
+                                    <x-dropdown-link :href="route('logout.traitor')"
+                                        onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                        {{ __('Se déconnecter') }}
+                                    </x-dropdown-link>
+                                @endif
+
                             </form>
                         </x-slot>
                     </x-dropdown>

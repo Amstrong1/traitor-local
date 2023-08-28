@@ -1,9 +1,12 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register.traitor') }}">
+    <h1 class="font-bold m-8 md:text-center">
+        S'inscrire
+    </h1>
+    <form method="POST" action="{{ route('register.traitor') }}" class="m-4">
         @csrf
 
          <!-- Name -->
-         <div>
+         <div class="">
             <x-input-label for="name" :value="__('Nom du propriétaire/gérant')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -39,6 +42,13 @@
 
         <!-- contact Address -->
         <div class="mt-4">
+            <x-input-label for="square" :value="__('Quartier')" />
+            <x-text-input id="square" class="block mt-1 w-full" type="text" name="square" :value="old('square')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('square')" class="mt-2" />
+        </div>
+
+        <!-- contact Address -->
+        <div class="mt-4">
             <x-input-label for="postal" :value="__('Code Postal')" />
             <x-text-input id="postal" class="block mt-1 w-full" type="text" name="postal" :value="old('postal')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('postal')" class="mt-2" />
@@ -51,13 +61,13 @@
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-end md:justify-between mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+                {{ __('Déja inscrit ?') }}
             </a>
 
             <x-primary-button class="ml-4">
-                {{ __('Register') }}
+                {{ __('S\'inscrire') }}
             </x-primary-button>
         </div>
     </form>

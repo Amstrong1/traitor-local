@@ -21,7 +21,16 @@
                             @foreach ($mattributes as $column => $title)
                                 <td class="border-t border-[#eee] py-5 px-4 dark:border-strokedark">
                                     @if ($column == 'avatar' || $column == 'image' || $column == 'photo' || $column == 'logo')
-                                        <h5 class="font-medium text-black">{{ $resource->name }}</h5>
+                                        <a class="flex items-center justify-center text-sm hover:opacity-80">
+                                            <!-- Avatar OR Image with inset shadow -->
+                                            <div class="relative hidden h-12 w-12 mr-3 md:block">
+                                                <img class="object-cover w-full h-full rounded-lg"
+                                                    src="{{ $resource->{$column} !== null
+                                                        ? url('storage/' . $resource->{$column})
+                                                        : 'https://ui-avatars.com/api/?background=random&name=' . $resource->fullname }}"
+                                                    alt="" loading="lazy">
+                                            </div>
+                                        </a>
                                     @elseif ($column == 'status')
                                         <p @class([
                                             'inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success' =>

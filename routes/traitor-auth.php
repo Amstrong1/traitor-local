@@ -55,6 +55,6 @@ Route::middleware('traitor')->group(function () {
 
     Route::put('password', [TraitorPasswordController::class, 'update'])->name('password.update');
 
-    Route::post('logout', [TraitorAuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+    Route::post('logout/traitor', [TraitorAuthenticatedSessionController::class, 'destroy'])
+                ->name('logout.traitor');
 });

@@ -26,7 +26,7 @@ class PasswordController extends Controller
         $traitor->password = Hash::make($request->password);
 
         if ($traitor->save()) {
-            Auth::login($traitor);
+            Auth::guard('traitor')->login($traitor);
             return redirect()->route('traitor.dashboard');
         }
     }

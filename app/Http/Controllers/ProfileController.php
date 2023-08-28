@@ -16,8 +16,16 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        if (Auth::user() !== null) {
+            $user = Auth::user();
+        } elseif (Auth::guard('admin')->user() !== null) {
+            $user = Auth::guard('admin')->user();
+        } elseif (Auth::guard('traitor')->user() !== null) {
+            $user = Auth::guard('traitor')->user();
+        }
+
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $user,
         ]);
     }
 

@@ -27,7 +27,7 @@ class StoreProductRequest extends FormRequest
             'price' => ['required', 'numeric'],
             'min_order_qte' => ['required', 'numeric'],
             'preparation_delay' => ['required', 'numeric'],
-            'image' => ['required', 'image', 'max:512'],
+            'image' => ['required', 'image', 'max:5000'],
         ];
     }
 }

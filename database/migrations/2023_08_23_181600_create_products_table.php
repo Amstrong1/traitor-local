@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('min_order_qte');
             $table->string('preparation_delay');
             $table->string('image');
+            $table->text('description');
             $table->timestamps();
         });
     }

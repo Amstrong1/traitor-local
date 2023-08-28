@@ -16,6 +16,9 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @include('sweetalert::alert')
+
 </head>
 
 <body class="font-sans antialiased">

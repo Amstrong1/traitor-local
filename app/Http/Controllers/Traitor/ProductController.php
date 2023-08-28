@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -50,13 +51,14 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->min_order_qte = $request->min_order_qte;
         $product->preparation_delay = $request->preparation_delay;
+        $product->description = $request->description;
         $product->image = $path;
 
         if ($product->save()) {
-            // Alert::toast("Données enregistrées", 'success');
+            Alert::toast("Données enregistrées", 'success');
             return redirect('traitor/products');
         } else {
-            // Alert::toast('Une erreur est survenue', 'error');
+            Alert::toast('Une erreur est survenue', 'error');
             return redirect()->back()->withInput($request->input());
         }
     }
@@ -97,15 +99,16 @@ class ProductController extends Controller
         $product->price = abs($request->price);
         $product->min_order_qte = abs($request->min_order_qte);
         $product->preparation_delay = abs($request->preparation_delay);
+        $product->description = $request->description;
         if (isset($path)) {
             $product->image = $path;
         }
 
         if ($product->save()) {
-            // Alert::toast('Les informations ont été modifiées', 'success');
+            Alert::toast('Les informations ont été modifiées', 'success');
             return redirect('traitor/products');
         } else {
-            // Alert::toast('Une erreur est survenue', 'error');
+            Alert::toast('Une erreur est survenue', 'error');
             return redirect()->back()->withInput($request->input());
         }
     }
@@ -118,10 +121,10 @@ class ProductController extends Controller
         try {
 
             $product = $product->delete();
-            // Alert::success('Opération effectuée', 'Suppression éffectué');
+            Alert::success('Opération effectuée', 'Suppression éffectué');
             return redirect('traitor/products');
         } catch (\Exception $e) {
-            // Alert::error('Erreur', 'Element introuvable');
+            Alert::error('Erreur', 'Element introuvable');
             return redirect()->back();
         }
     }
@@ -129,11 +132,13 @@ class ProductController extends Controller
     private function product_columns()
     {
         $columns = (object) [
+            'image' => '',
             'name' => 'Produit',
             'type' => 'Type',
             'price' => 'Prix',
             'min_order_qte' => 'Qte Min de Commande',
             'preparation_delay' => 'Temps de préparation',
+            'description' => 'Desciption',
         ];
         return $columns;
     }
@@ -141,7 +146,7 @@ class ProductController extends Controller
     private function product_actions()
     {
         $actions = (object) array(
-            'show' => "Voir",
+            // 'show' => "Voir",
             'edit' => "Modifier",
             'delete' => "Supprimer",
         );
@@ -181,6 +186,10 @@ class ProductController extends Controller
             'image' => [
                 'title' => 'Image',
                 'field' => 'file'
+            ],
+            'description' => [
+                'title' => 'Description',
+                'field' => 'textarea'
             ],
         ];
         return $fields;

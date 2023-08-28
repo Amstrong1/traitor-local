@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('contact');
             $table->string('city');
+            $table->string('square');
             $table->string('address');
             $table->string('postal');
             $table->string('status');
