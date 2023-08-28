@@ -35,7 +35,7 @@
                         <div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
                             <div class="g-0 lg:flex lg:flex-wrap">
                                 <!-- Left column container-->
-                                <div class="px-4 md:px-0 lg:w-6/12">
+                                <div class="p-4 md:px-0 lg:w-6/12">
                                     <div class="md:m-6 md:px-12 md:py-6">
                                         <!--Logo-->
                                         <div class="text-center">
