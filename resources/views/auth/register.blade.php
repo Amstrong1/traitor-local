@@ -1,5 +1,5 @@
 <x-user-app>
-    <h1 class="font-bold m-8 text-center">
+    <h1 class="font-bold m-8">
         S'inscrire
     </h1>
     <form method="POST" action="{{ route('register') }}" class="m-4">
@@ -8,35 +8,35 @@
         <!-- Name -->
         <div class="">
             <x-input-label for="name" :value="__('Nom')" />
-            <x-text-input id="name" class="block mt-1 w-full border-2 py-4" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4 ">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full border-2 py-4" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4 ">
             <x-input-label for="city" :value="__('Ville')" />
-            <x-text-input id="city" class="block mt-1 w-full border-2 py-4" type="text" name="city" :value="old('city')" required autocomplete="username" />
+            <x-text-input id="city" type="text" name="city" :value="old('city')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('city')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4 ">
             <x-input-label for="square" :value="__('Quartier')" />
-            <x-text-input id="square" class="block mt-1 w-full border-2 py-4" type="text" name="square" :value="old('square')" required autocomplete="username" />
+            <x-text-input id="square" type="text" name="square" :value="old('square')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('square')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4 ">
             <x-input-label for="address" :value="__('Adresse')" />
-            <x-text-input id="address" class="block mt-1 w-full border-2 py-4" type="text" name="address" :value="old('square')" required autocomplete="username" />
+            <x-text-input id="address" type="text" name="address" :value="old('square')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
@@ -44,7 +44,7 @@
         <div class="mt-4 ">
             <x-input-label for="password" :value="__('Mot de passe')" />
 
-            <x-text-input id="password" class="block mt-1 w-full border-2 py-4"
+            <x-text-input id="password"
                             type="password"
                             name="password"
                             required autocomplete="new-password" />
@@ -56,7 +56,7 @@
         <div class="mt-4  mb-4">
             <x-input-label for="password_confirmation" :value="__('Confirmation du mot de passe')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full border-2 py-4"
+            <x-text-input id="password_confirmation"
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" />
 

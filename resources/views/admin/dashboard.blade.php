@@ -30,9 +30,9 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        $3.456K
+                                        {{-- {{ $traitors }} --}}
                                     </h4>
-                                    <span class="text-sm font-medium">Total views</span>
+                                    <span class="text-sm font-medium">Traiteus</span>
                                 </div>
 
                                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">

@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 {{-- hamburger icon --}}
-                <div class="flex item-center">
+                <div class="flex items-center">
                     <button
                         class="lg:hidden sm:block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200"
                         data-te-sidenav-toggle-ref data-te-target="#sidenav-1" aria-controls="#sidenav-1"

@@ -233,7 +233,7 @@
             <div class="w-full flex items-center justify-between">
                 <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
                     href="#">
-                    <img src="{{ asset('img/logo-old.jpg') }}" alt="" srcset="">
+                    <img class="w-32" src="{{ asset('img/logo-old.jpg') }}" alt="" srcset="">
                 </a>
 
                 <div class="flex w-1/2 justify-end content-center">

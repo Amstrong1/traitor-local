@@ -20,16 +20,16 @@
 
     <!-- Scripts -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     @include('sweetalert::alert')
 
 </head>
 
-<body class="font-sans antialiased pb-4">
+<body class="font-sans antialiased pb-4" style="background-color: #fefef6">
     @include('layouts.user-navigation')
 
     <!-- Page Content -->
-    <main class="md:w-1/3 mx-auto">
+    <main class="md:w-1/3 mx-auto pt-16">
         {{ $slot }}
     </main>
 

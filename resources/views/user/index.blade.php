@@ -1,6 +1,6 @@
 <x-user-app>
 
-    <h1 class="my-6 p-6 text-center">Trouver des traiteurs proches de chez vous</h1>
+    <h1 class="my-4 p-4 text-center">Trouver des traiteurs proches de chez vous</h1>
 
     <form class="text-center" action="{{ route('home.products') }}" method="post">
         @csrf
@@ -30,7 +30,7 @@
     </form>
 
     <div class="flex flex-col my-6">
-        <div class="flex flex-row my-4">
+        <div class="flex flex-row my-4 bg-white">
             <div class="flex flex-wrap w-1/2 justify-center">
                 <div class="w-14 h-14">
                     <img src="{{ asset('img/entree.jpg') }}" alt="entree_image"
@@ -40,7 +40,7 @@
             <div class="flex items-center w-1/2 justify-center">Entrée</div>
         </div>
 
-        <div class="flex flex-row my-4">
+        <div class="flex flex-row my-4 bg-white">
             <div class="flex flex-wrap w-1/2 justify-center">
                 <div class="w-14 h-14">
                     <img src="{{ asset('img/plat.jpg') }}" alt="plat_image"
@@ -50,7 +50,7 @@
             <div class="flex items-center w-1/2 justify-center">Plat</div>
         </div>
 
-        <div class="flex flex-row my-4">
+        <div class="flex flex-row my-4 bg-white">
             <div class="flex flex-wrap w-1/2 justify-center">
                 <div class="w-14 h-14 ">
                     <img src="{{ asset('img/dessert.jpg') }}" alt="dessert_image"
@@ -60,7 +60,7 @@
             <div class="flex items-center w-1/2 justify-center">Dessert</div>
         </div>
 
-        <div class="flex flex-row my-4">
+        <div class="flex flex-row my-4 bg-white">
             <div class="flex flex-wrap w-1/2 justify-center">
                 <div class="w-14 h-14">
                     <img src="{{ asset('img/boisson.jpg') }}" alt="boisson_image"

@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Admin::factory()->create([
             'name' => 'Administrateur',
-            'email' => 'contact@vibecro-corp.net',
+            'email' => 'test@example.com',
             'password' => Hash::make('password'),
         ]);
     }

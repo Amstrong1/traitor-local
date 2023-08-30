@@ -37,7 +37,6 @@ class UserController extends Controller
                 'quantity' => 'required',
                 'date' => 'required',
                 'hour' => 'required',
-                'total' => '',
             ]);
 
             $cart = [
@@ -70,12 +69,14 @@ class UserController extends Controller
 
     public function order()
     {
-        return view('user.order');
+        $orders = Order::where('user_id', Auth::user()->id)->where('status', 'pending')->get();
+        return view('user.order', compact('orders'));
     }
 
     public function storeOrder(Request $request)
     {
         if (Auth::user() !== null) {
+            $error = 0;
             for ($i = 0; $i < sizeof(session('cart')); $i++) {
                 $product = Product::find($request->input('productId' . $i));
                 $order = new Order();
@@ -83,7 +84,7 @@ class UserController extends Controller
                 $order->user_id = Auth::user()->id;
                 $order->traitor_id = $product->traitor->id;
                 $order->product_id = $product->id;
-                $order->quantity = $request->input('quantity' . $i);
+                $order->quantity = $request->input('productQte' . $i);
                 $order->amount = $request->input('productSubTotal' . $i);
                 $order->delivery_place = Auth::user()->city . ', ' . Auth::user()->square . ', ' . Auth::user()->address;
                 $order->delivery_date = $request->input('deliveryDate' . $i);
@@ -91,12 +92,20 @@ class UserController extends Controller
                 $order->user_note = $request->input('note' . $i);
                 $order->status = 'pending';
 
-                $order->save();
-                $traitor = $product->traitor;
-                $traitor->notify(new NewOrderNotification());
+                if ($order->save()) {
+                    $traitor = $product->traitor;
+                    $traitor->notify(new NewOrderNotification());
+                } else {
+                    $error++;
+                }
             }
-            Session::forget('cart');
-            Alert::toast('Commandes enregistrées', 'success');
+            if ($error == 0) {
+                Session::forget('cart');
+                Alert::toast('Commandes enregistrées', 'success');
+            } else {
+                Alert::toast('Une erreur est survenue', 'error');
+            }
+            return back();
         } else {
             return redirect()->route('login');
         }

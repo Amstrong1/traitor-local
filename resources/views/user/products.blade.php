@@ -1,9 +1,12 @@
 <x-user-app>
 
-    <form class="text-center mt-2" action="" method="post">
+    <form class="text-center mt-6" action="" method="post">
         @csrf
-        <div class="flex flex-nowrap rounded-full border-2 justify-around w-3/4 mx-auto outline-0 focus:outline-0 active:outline-0 p-2">
-            <input name='city' class="placeholder:text-center placeholder:text-sm border-0" type="text"
+        <div class="flex flex-nowrap rounded-full justify-around w-3/4 mx-auto outline-0 focus:outline-0 active:outline-0 p-1"
+            style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
+            <input name='city'
+                class="placeholder:text-center placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
+                type="text" style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
                 placeholder="Choix de la ville" value="{{ request()->city }}">
             <button type="submit"
                 class="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 dark:text-neutral-200 dark:placeholder:text-neutral-200">
@@ -15,7 +18,7 @@
             </button>
         </div>
     </form>
-    
+
     @livewire('products')
 
 </x-user-app>

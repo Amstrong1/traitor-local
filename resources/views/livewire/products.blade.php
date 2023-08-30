@@ -1,22 +1,23 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
-    @if ($products !== null)
 
-        <div class="text-center mt-2 py-2 mx-auto border-2 rounded-full w-3/4">
-            <select id="type_id" name="type" wire:model="type_id" wire:change="updateType($event.target.value)"
-                class="placeholder:text-center placeholder:text-sm rounded-full w-3/4 bg-transparent border-0">
-                @foreach ($types as $type_id => $type)
-                    <option value="{{ $type_id }}">{{ $type }}</option>
-                @endforeach
-            </select>
+    <div class="text-center mt-2 py-1 mx-auto rounded-full w-3/4"
+        style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
+        <select id="type_id" name="type" wire:model="type_id" wire:change="updateType($event.target.value)"
+            class="placeholder:text-center placeholder:text-sm rounded-full w-3/4 bg-transparent border-0"
+            style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
+            @foreach ($types as $type_id => $type)
+                <option value="{{ $type_id }}">{{ $type }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="flex justify-center w-full">
+        <div wire:loading>
+            Recherche en cours...
         </div>
-
-        <div class="flex justify-center w-full">
-            <div wire:loading>
-                Recherche en cours...
-            </div>
-        </div>
-
+    </div>
+    @if ($products->count() !== 0)
         @foreach ($products as $product)
             <div class="flex flex-col my-6 relative" data-te-dropdown-ref>
                 <a href="{{ route('home.show.product', [$product->id]) }}">
@@ -129,8 +130,9 @@
             </div>
         @endforeach
     @else
-        <div class="flex items-center justify-center w-full h-full">
+        <div class="flex flex-col items-center justify-center text-center m-4">
             Aucune données ne correspond à votre recherche
+            <img src="{{ asset('img/nodata.svg') }}" alt="no_data" srcset="">
         </div>
     @endif
 </div>

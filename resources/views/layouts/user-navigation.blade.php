@@ -1,9 +1,43 @@
-<nav x-data="{ open: false }" class="w-full bg-black border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="w-full bg-black dark:border-gray-700 fixed z-10">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             {{-- hamburger icon --}}
-            <div class="flex item-center">
+            <div class="flex items-center">
+                @if (request()->routeIs('home.show.product'))
+                    <button
+                        class="sm:block border-0 bg-transparent px-2 text-white hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-white mr-2">
+                        @if (session('city') !== null)
+                            <form action="{{ route('home.products') }}" method="post">
+                                @csrf
+                                <!-- Hamburger icon -->
+                                <input type="hidden" name="city" value="{{ session('city') }}">
+                                <a href="{{ route('home.products') }}"
+                                    onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                                    <span class="[&>svg]:w-7">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </form>
+                        @else
+                            <a href="{{ route('home.index') }}">
+                                <span class="[&>svg]:w-7">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                                    </svg>
+                                </span>
+                            </a>
+                        @endif
+                    </button>
+                @endif
+
                 <button
                     class="sm:block border-0 bg-transparent px-2 text-white hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-white"
                     data-te-sidenav-toggle-ref data-te-target="#menu" aria-controls="#menu" aria-haspopup="true">
@@ -19,15 +53,14 @@
             </div>
 
             <!-- Navigation Links -->
-            <div class="flex item-center">
+            <div class="flex items-center">
                 <x-nav-link :href="route('home.index')">
                     <img class="w-24" src="{{ asset('img/logo-old.jpg') }}" alt="">
                 </x-nav-link>
             </div>
 
-
             {{-- cart icon --}}
-            <div class="flex item-center">
+            <div class="flex items-center">
                 <button
                     class="sm:block border-0 bg-transparent px-2 text-white hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-white"
                     data-te-sidenav-toggle-ref data-te-target="#cart" aria-controls="#cart" aria-haspopup="true">
@@ -71,7 +104,7 @@
                 <a href="{{ route('user.profil') }}">Mon Profil</a>
             </li>
             <li class="relative mx-4 my-6 text-center">
-                <a href="">Mes Commandes</a>
+                <a href="{{ route('user.order') }}">Mes Commandes</a>
             </li>
             <li class="relative mx-4 my-6 text-center">
                 <form method="POST" action="{{ route('logout') }}">
@@ -95,7 +128,7 @@
 
 <!-- Sidenav left (cart)-->
 <nav id="cart"
-    class="bg-black opacity-80 text-white rounded-tl-xl fixed right-0 top-16 z-[1035] h-full w-60 translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:-translate-x-0 dark:bg-zinc-800"
+    class="bg-black opacity-90 text-white rounded-tl-xl fixed right-0 top-16 z-[1035] h-full w-60 translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:-translate-x-0 dark:bg-zinc-800 overflow-x-auto pb-16"
     data-te-sidenav-init data-te-sidenav-hidden="true" data-te-sidenav-right="true">
     <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
         {{-- check if user add product in cart  --}}
@@ -149,15 +182,15 @@
                 @endfor
 
                 <li class="relative m-4 border-b-2">
-                    <div class="text-center rounded-full border px-4 mb-4 w-32">
-                        Total : {{ $total }}
+                    <div class="text-center rounded-full border px-4 mb-4 w-32 font-black" style="background-color: #bbaf7b">
+                        Total : {{ $total . '€' }}
                     </div>
                 </li>
 
                 <input type="hidden" name="total" value="{{ $total }}">
 
                 <li class="relative m-4 border-b-2">
-                    <button type="submit" class="text-center rounded-full border px-4 py-2 mb-4 w-32">
+                    <button type="submit" class="text-black text-center rounded-full px-4 py-2 mb-4 w-32 font-bold" style="background-color: #bdd5f8">
                         Commander
                     </button>
                 </li>
@@ -177,7 +210,7 @@
             </li>
             <li class="relative m-4">
                 <a href="{{ route('login') }}">
-                    <button class="text-center rounded-full border px-4 py-4 mb-4 w-40">
+                    <button class="text-black text-center rounded-full px-4 py-2 mb-4 w-40" style="background-color: #bdd5f8">
                         Se connecter
                     </button>
                 </a>
