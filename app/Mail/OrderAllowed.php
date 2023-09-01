@@ -14,11 +14,17 @@ class OrderAllowed extends Mailable
     use Queueable, SerializesModels;
 
     /**
+     * Elements de message
+     * @var array
+     */
+    public $order;
+
+    /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -37,7 +43,7 @@ class OrderAllowed extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'traitor.mail',
         );
     }
 

@@ -31,6 +31,7 @@
                         @php
                             $item = $order;
                             $fields = $my_fields;
+                            // dd($item, $fields);
                         @endphp
 
                         @foreach ($fields as $attr => $value)
@@ -59,7 +60,7 @@
                         </h3>
                     </div>
                     <div class="p-6 border-b border-stroke dark:border-strokedark">
-                        <form action="{{ route('traitor.orders.allow', [$traitor->id]) }}" method="POST">
+                        <form action="{{ route('traitor.orders.allow', [$order->id]) }}" method="POST">
                             @csrf
                             <div class="mb-6">
                                 <label class="mb-3 block text-black">
@@ -75,7 +76,7 @@
                         </form>
                     </div>
                     <div class="p-6">
-                        <form action="{{ route('traitor.orders.deny', [$traitor->id]) }}" method="POST">
+                        <form action="{{ route('traitor.orders.deny', [$order->id]) }}" method="POST">
                             @csrf
                             <div class="mb-6">
                                 <label class="mb-3 block text-black">

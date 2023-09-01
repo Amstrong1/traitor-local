@@ -22,13 +22,13 @@ Route::middleware('traitor')->group(function () {
         Route::get('/', [HomeController::class, 'index']);
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-        Route::match(['get', 'post'], '/order', [OrderController::class, 'index'])->name('orders.index');
-        Route::match(['get', 'post'], '/order/allowed', [OrderController::class, 'allowed'])->name('orders.allowed');
-        Route::match(['get', 'post'], '/order/denied', [OrderController::class, 'denied'])->name('orders.denied');
-        Route::match(['get', 'post'], '/order/delivered', [OrderController::class, 'delivered'])->name('orders.delivered');
-        Route::match(['get', 'post'], '/order/show/{id}', [OrderController::class, 'show'])->name('orders.show');
-        Route::post('/order/allow/{id}', [OrderController::class, 'allow'])->name('orders.allow');
-        Route::post('/order/deny/{id}', [OrderController::class, 'deny'])->name('orders.deny');
+        Route::match(['get', 'post'], '/orders/allowed', [OrderController::class, 'allowed'])->name('orders.allowed');
+        Route::match(['get', 'post'], '/orders/denied', [OrderController::class, 'denied'])->name('orders.denied');
+        Route::match(['get', 'post'], '/orders/delivered', [OrderController::class, 'delivered'])->name('orders.delivered');
+        Route::post('/orders/allow/{id}', [OrderController::class, 'allow'])->name('orders.allow');
+        Route::post('/orders/deny/{id}', [OrderController::class, 'deny'])->name('orders.deny');
+
+        Route::resource('/orders', OrderController::class);
 
         Route::resource('/products', ProductController::class);
     });

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('user_note')->nullable();
             $table->text('traitor_note')->nullable();
             $table->string('status');
+            $table->boolean('paid')->default(0);
             $table->timestamps();
         });
     }

@@ -69,7 +69,7 @@ class UserController extends Controller
 
     public function order()
     {
-        $orders = Order::where('user_id', Auth::user()->id)->where('status', 'pending')->get();
+        $orders = Order::where('user_id', Auth::user()->id)->where('status', '!=', 'delivered')->get();
         return view('user.order', compact('orders'));
     }
 
@@ -122,8 +122,15 @@ class UserController extends Controller
 
         Session::forget('cart');
 
-        // Session::push('cart', $cloud);
+        Session::push('cart', $cloud);
 
         return back();
+    }
+
+    public function orderProduct($id)
+    {
+        $order = Order::find($id);
+
+        return view('user.order-product', compact('order'));
     }
 }

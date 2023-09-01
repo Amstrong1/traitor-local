@@ -15,6 +15,8 @@ class Order extends Model
         'product_name',
         'formatted_delivery_date',
         'formatted_delivery_hour',
+        'formatted_status',
+        'formatted_paid'
     ];
 
     public function user(): BelongsTo
@@ -35,15 +37,34 @@ class Order extends Model
     public function getProductNameAttribute()
     {
         return $this->product->name;
-    }    
-    
-    public function getFormattedDeleveryDateAttribute()
+    }
+
+    public function getFormattedDeliveryDateAttribute()
     {
         return getFormattedDate($this->delivery_date);
-    }   
-    
-    public function getFormattedDeleveryHourAttribute()
+    }
+
+    public function getFormattedStatusAttribute()
     {
-        return getFormattedTime($this->delivery_hour);
+        if ($this->status === 'allowed') {
+            $status = 'Confirmée';
+        } elseif ($this->status === 'pending') {
+            $status = 'En attente';
+        } else {
+            $status = 'Refusée';
+        }
+
+        return $status;
+    }
+
+    public function getFormattedPaidAttribute()
+    {
+        if ($this->paid === 0) {
+            $paidStatus = 'Non';
+        } else {
+            $paidStatus = 'Oui';
+        }
+
+        return $paidStatus;
     }
 }

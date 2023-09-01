@@ -75,7 +75,7 @@ class OrderController extends Controller
         $order->traitor_note = $request->message;
         $order->save();
         $user = User::find($order->user_id);
-        Mail::to($order->email)->send(new OrderAllowed($user));
+        Mail::to($user->email)->send(new OrderAllowed($order));
         Alert::toast('Commande confirmé', 'success');
         return redirect()->route('traitor.orders.index');
     }
@@ -87,7 +87,7 @@ class OrderController extends Controller
         $order->traitor_note = $request->message;
         $order->save();
         $user = User::find($order->user_id);
-        Mail::to($order->email)->send(new OrderDenied($user));
+        Mail::to($user->email)->send(new OrderDenied($order));
         Alert::toast('Commande refusé', 'error');
         return redirect()->route('traitor.orders.index');
     }
@@ -109,14 +109,12 @@ class OrderController extends Controller
     private function order_columns()
     {
         $columns = (object) [
-            // 'user_name' => 'Client',
             'product_name' => 'Produit',
             'quantity' => 'Quantité',
-            // 'amount' => 'Adresse',
             'delivery_place' => 'Adresse de livraison',
             'formatted_delivery_date' => 'Date de livraison',
-            'formatted_delivery_hour' => 'Heure de livraison',
-            // 'user_note' => 'Adresse',
+            'delivery_hour' => 'Heure de livraison',
+            'statusPaid' => 'Payé',
         ];
         return $columns;
     }
@@ -134,10 +132,6 @@ class OrderController extends Controller
 
     private function order_fields()
     {
-        $status = [
-            'allowed' => 'allowed',
-            'denied' => 'denied',
-        ];
         $fields = [
             'user_name' => [
                 'title' => 'Client',
@@ -168,7 +162,7 @@ class OrderController extends Controller
                 'title' => 'Heure de livraison',
                 'field' => 'time'
             ],
-            'note' => [
+            'user_note' => [
                 'title' => 'Note du client',
                 'field' => 'textarea'
             ]

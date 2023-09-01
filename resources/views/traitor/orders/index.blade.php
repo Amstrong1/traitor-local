@@ -43,7 +43,7 @@
                     </form> --}}
 
                     <div class="mt-4">
-                        <x-table :resources="$traitors" :mattributes="$my_attributes" type="traitor.order" :mactions="$my_actions" />
+                        <x-table :resources="$orders" :mattributes="$my_attributes" type="traitor.order" :mactions="$my_actions" />
                     </div>
                 </div>
             </div>
