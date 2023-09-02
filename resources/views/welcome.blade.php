@@ -267,7 +267,8 @@
                     class="my-4 text-3xl md:text-5xl text-purple-800 font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
                     Trouver des traiteurs proches de chez vous</h1>
                 <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
-                    Explorer de nouvelles saveurs et cuisines sans quitter votre maison. Commandez en ligne avec Traiteur Local et profitez d'un monde de goûts!</p>
+                    Explorer de nouvelles saveurs et cuisines sans quitter votre maison en commandant en ligne avec Traiteur Local
+                </p>
 
                 <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center md:text-left fade-in">Télécharger l'app ou
                     voir <a href="{{ route('home.index') }}">le site</a></p>
@@ -294,7 +295,9 @@
                                     <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Client
                                     </h2>
                                     <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Pour vous</h1>
-                                    <p class="leading-relaxed mb-3">Redécouvrez toute la gastronomie francaise proche de chez vous et sans vous déplacer.</p>
+                                    <p class="leading-relaxed mb-3">
+                                        Venez découvrir notre carte d'entrées, plats desserts, et/ou boissons et faites vous livrer par le traiteur. 
+                                    </p>
                                     <div class="flex items-center flex-wrap ">
                                         <a href="#" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Télécharger l'application
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
@@ -316,7 +319,9 @@
                                     <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Traiteur
                                     </h2>
                                     <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Par vous</h1>
-                                    <p class="leading-relaxed mb-3">Faites découvrir toute la richesse des plats francais grâce à votre savoir faire.</p>
+                                    <p class="leading-relaxed mb-3">
+                                        Offrez de nouvelles saveurs à travers notre application. Partager votre passion et savoir faire venant de votre expérience culinaire professionnelle à la table de vos clients. Organiser la planification de vos évènements grâce notre plateforme.
+                                    </p>
                                     <div class="flex items-center flex-wrap">
                                         <a href="{{ route('register.traitor') }}" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Creer un compte
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"

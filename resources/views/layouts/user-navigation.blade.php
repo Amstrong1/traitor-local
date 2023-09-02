@@ -117,10 +117,10 @@
             </li>
         @endauth
         <li class="relative mx-4 my-6 text-center">
-            <a href="">Mentions légales</a>
+            <a href="{{ route('home.legal') }}">Mentions légales</a>
         </li>
         <li class="relative m-4 text-center">
-            <a href="{{ url('/') }}">Site Internet</a>
+            <a href="{{ url('/home') }}">Site Internet</a>
         </li>
     </ul>
 </nav>

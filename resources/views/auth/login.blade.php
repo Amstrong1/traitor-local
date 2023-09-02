@@ -36,7 +36,7 @@
             </label>
         </div> --}}
 
-        <div class="flex flex-col items-center justify-end mt-16 mb-4">
+        <div class="flex items-center justify-center mt-16 mb-4">
             <x-primary-button>
                 {{ __('Valider') }}
             </x-primary-button>

@@ -43,7 +43,9 @@ class ProductController extends Controller
         $product = new Product();
 
         $fileName = time() . '.' . $request->image->extension();
-        $path = $request->file('image')->storeAs('images', $fileName, 'public');
+        // $path = $request->file('image')->storeAs('images', $fileName, 'public');
+
+        $request->image->move(public_path('storage'), $fileName);
 
         $product->traitor_id = Auth::guard('traitor')->user()->id;
         $product->type = $request->type;
@@ -52,7 +54,7 @@ class ProductController extends Controller
         $product->min_order_qte = $request->min_order_qte;
         $product->preparation_delay = $request->preparation_delay;
         $product->description = $request->description;
-        $product->image = $path;
+        $product->image = $fileName;
 
         if ($product->save()) {
             Alert::toast("Données enregistrées", 'success');

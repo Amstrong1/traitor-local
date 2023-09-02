@@ -17,6 +17,11 @@ class UserController extends Controller
     {
         return view('user.index');
     }
+    
+    public function legal()
+    {
+        return view('user.legal');
+    }
 
     public function indexProducts(Request $request)
     {

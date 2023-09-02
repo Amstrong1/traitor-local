@@ -56,7 +56,7 @@
     </div>
 
     <div class="flex flex-col m-4">
-        <x-input-label for="square" :value="__('Quartier')" />
+        <x-input-label for="square" :value="__('Rue')" />
 
         <x-text-input id="square" type="text" name="square" value="{{ Auth::user()->square }}" readonly />
 

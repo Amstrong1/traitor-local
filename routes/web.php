@@ -32,6 +32,7 @@ Route::match(['get', 'post'], '/home/order', [UserController::class, 'order'])->
 Route::match(['get', 'post'], '/home/order/store', [UserController::class, 'storeOrder'])->name('store.order');
 Route::match(['get', 'post'], '/home/cart/remove/{session_product}', [UserController::class, 'removeProduct'])->name('remove.product');
 Route::match(['get', 'post'], '/home/order/product/{id}', [UserController::class, 'orderProduct'])->name('order.product');
+Route::match(['get', 'post'], '/home/legal', [UserController::class, 'legal'])->name('home.legal');
 
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');

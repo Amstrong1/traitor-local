@@ -42,7 +42,7 @@
 
         <!-- contact Address -->
         <div class="mt-4">
-            <x-input-label for="square" :value="__('Quartier')" />
+            <x-input-label for="square" :value="__('Rue')" />
             <x-text-input id="square" class="block mt-1 w-full" type="text" name="square" :value="old('square')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('square')" class="mt-2" />
         </div>

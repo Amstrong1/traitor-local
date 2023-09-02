@@ -2,9 +2,10 @@
 
     <h1 class="my-4 p-4 text-center">Trouver des traiteurs proches de chez vous</h1>
 
-    <form class="text-center" action="{{ route('home.products') }}" method="post">
+    <form class="text-center" action="{{ route('home.products', [($type = null)]) }}" method="post">
         @csrf
-        <div class="flex flex-nowrap rounded-full font-bold justify-around w-3/4 mx-auto items-center p-1" style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
+        <div class="flex flex-nowrap rounded-full font-bold justify-around w-3/4 mx-auto items-center p-1"
+            style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
             <input name='city' style="background-color: #bbaf7b"
                 class="placeholder:text-center placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
                 type="text" placeholder="Entrez votre ville">
@@ -30,44 +31,60 @@
     </form>
 
     <div class="flex flex-col my-6">
-        <div class="flex flex-row my-4 bg-white">
-            <div class="flex flex-wrap w-1/2 justify-center">
-                <div class="w-14 h-14">
-                    <img src="{{ asset('img/entree.jpg') }}" alt="entree_image"
-                        class="shadow rounded-full w-full h-full align-middle border-none" />
+        {{-- <a href="{{ route('home.products', [($type = 'Entrée')]) }}"
+            onclick="event.preventDefault();
+                            this.closest('form').submit();"> --}}
+            <div class="flex flex-row my-4 bg-white">
+                <div class="flex flex-wrap w-1/2 justify-center">
+                    <div class="w-14 h-14">
+                        <img src="{{ asset('img/entree.jpg') }}" alt="entree_image"
+                            class="shadow rounded-full w-full h-full align-middle border-none" />
+                    </div>
                 </div>
+                <div class="flex items-center w-1/2 justify-center">Entrée</div>
             </div>
-            <div class="flex items-center w-1/2 justify-center">Entrée</div>
-        </div>
+        {{-- </a> --}}
 
-        <div class="flex flex-row my-4 bg-white">
-            <div class="flex flex-wrap w-1/2 justify-center">
-                <div class="w-14 h-14">
-                    <img src="{{ asset('img/plat.jpg') }}" alt="plat_image"
-                        class="shadow rounded-full w-full h-full align-middle border-none" />
+        {{-- <a href="{{ route('home.products', [($type = 'Plat')]) }}"
+            onclick="event.preventDefault();
+            this.closest('form').submit();"> --}}
+            <div class="flex flex-row my-4 bg-white">
+                <div class="flex flex-wrap w-1/2 justify-center">
+                    <div class="w-14 h-14">
+                        <img src="{{ asset('img/plat.jpg') }}" alt="plat_image"
+                            class="shadow rounded-full w-full h-full align-middle border-none" />
+                    </div>
                 </div>
+                <div class="flex items-center w-1/2 justify-center">Plat</div>
             </div>
-            <div class="flex items-center w-1/2 justify-center">Plat</div>
-        </div>
+        {{-- </a> --}}
 
-        <div class="flex flex-row my-4 bg-white">
-            <div class="flex flex-wrap w-1/2 justify-center">
-                <div class="w-14 h-14 ">
-                    <img src="{{ asset('img/dessert.jpg') }}" alt="dessert_image"
-                        class="shadow rounded-full w-full h-full align-middle border-none" />
+        {{-- <a href="{{ route('home.products', [($type = 'Dessert')]) }}"
+            onclick="event.preventDefault();
+            this.closest('form').submit();"> --}}
+            <div class="flex flex-row my-4 bg-white">
+                <div class="flex flex-wrap w-1/2 justify-center">
+                    <div class="w-14 h-14 ">
+                        <img src="{{ asset('img/dessert.jpg') }}" alt="dessert_image"
+                            class="shadow rounded-full w-full h-full align-middle border-none" />
+                    </div>
                 </div>
+                <div class="flex items-center w-1/2 justify-center">Dessert</div>
             </div>
-            <div class="flex items-center w-1/2 justify-center">Dessert</div>
-        </div>
+        {{-- </a> --}}
 
-        <div class="flex flex-row my-4 bg-white">
-            <div class="flex flex-wrap w-1/2 justify-center">
-                <div class="w-14 h-14">
-                    <img src="{{ asset('img/boisson.jpg') }}" alt="boisson_image"
-                        class="shadow rounded-full w-full h-full align-middle border-none" />
+        {{-- <a href="{{ route('home.products', [($type = 'Boisson')]) }}"
+            onclick="event.preventDefault();
+            this.closest('form').submit();"> --}}
+            <div class="flex flex-row my-4 bg-white">
+                <div class="flex flex-wrap w-1/2 justify-center">
+                    <div class="w-14 h-14">
+                        <img src="{{ asset('img/boisson.jpg') }}" alt="boisson_image"
+                            class="shadow rounded-full w-full h-full align-middle border-none" />
+                    </div>
                 </div>
+                <div class="flex items-center w-1/2 justify-center">Boissons</div>
             </div>
-            <div class="flex items-center w-1/2 justify-center">Boissons</div>
-        </div>
+        {{-- </a> --}}
     </div>
 </x-user-app>

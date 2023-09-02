@@ -28,7 +28,7 @@
 
         <!-- Email Address -->
         <div class="mt-4 ">
-            <x-input-label for="square" :value="__('Quartier')" />
+            <x-input-label for="square" :value="__('Rue')" />
             <x-text-input id="square" type="text" name="square" :value="old('square')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('square')" class="mt-2" />
         </div>
@@ -63,7 +63,7 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-center mt-4 ">
+        <div class="flex items-center justify-center mt-4">
             <x-primary-button class="ml-3 bg-black">
                 {{ __('Valider') }}
             </x-primary-button>
