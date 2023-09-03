@@ -20,11 +20,11 @@ class UserController extends Controller
     private function user_columns()
     {
         $columns = (object) [
-            // 'name' => 'Nom',
-            // 'city' => 'Propriétaire/Gérant',
-            // 'city' => 'Ville',
-            // 'address' => 'Adresse',
-            // // 'status' => 'Statut',
+            'name' => 'Nom',
+            'email' => 'Email',
+            'city' => 'Ville',
+            'square' => 'Rue',
+            'address' => 'Adresse',
         ];
         return $columns;
     }

@@ -30,13 +30,13 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        {{-- {{ $traitors }} --}}
+                                        
                                     </h4>
                                     <span class="text-sm font-medium">Traiteus</span>
                                 </div>
 
                                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
-                                    0.43%
+                                    {{ $traitors }}
                                     <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -70,13 +70,12 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        $45,2K
                                     </h4>
-                                    <span class="text-sm font-medium">Total Profit</span>
+                                    <span class="text-sm font-medium">Utilisateurs</span>
                                 </div>
 
                                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
-                                    4.35%
+                                    {{ $users }}
                                     <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -107,13 +106,13 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        2.450
+                                        {{ $productsSum }}€
                                     </h4>
-                                    <span class="text-sm font-medium">Total Product</span>
+                                    <span class="text-sm font-medium">Produits</span>
                                 </div>
 
                                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
-                                    2.59%
+                                    {{ $products->count() }}
                                     <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -147,13 +146,13 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        3.456
+                                        {{ $deliveredOrdersSum }}€
                                     </h4>
-                                    <span class="text-sm font-medium">Total Users</span>
+                                    <span class="text-sm font-medium">Commandes éffectuées</span>
                                 </div>
 
                                 <span class="flex items-center gap-1 text-sm font-medium text-meta-5">
-                                    0.95%
+                                    {{ $deliveredOrders->count() }}
                                     <svg class="fill-meta-5" width="10" height="11" viewBox="0 0 10 11"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
