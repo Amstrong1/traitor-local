@@ -323,7 +323,7 @@
                                         Offrez de nouvelles saveurs à travers notre application. Partager votre passion et savoir faire venant de votre expérience culinaire professionnelle à la table de vos clients. Organiser la planification de vos évènements grâce notre plateforme.
                                     </p>
                                     <div class="flex items-center flex-wrap">
-                                        <a href="{{ route('register.traitor') }}" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Creer un compte
+                                        <a href="{{ route('register.traitor') }}" class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Créer un compte
                                             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
                                                 stroke-width="2" fill="none" stroke-linecap="round"
                                                 stroke-linejoin="round">

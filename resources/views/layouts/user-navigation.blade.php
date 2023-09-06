@@ -13,8 +13,7 @@
                                 <!-- Hamburger icon -->
                                 <input type="hidden" name="city" value="{{ session('city') }}">
                                 <a href="{{ route('home.products') }}"
-                                    onclick="event.preventDefault();
-                            this.closest('form').submit();">
+                                    onclick="event.preventDefault(); this.closest('form').submit();">
                                     <span class="[&>svg]:w-7">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -55,7 +54,7 @@
             <!-- Navigation Links -->
             <div class="flex items-center">
                 <x-nav-link :href="route('home.index')">
-                    <img class="w-24" src="{{ asset('img/logo-old.jpg') }}" alt="">
+                    <img class="w-14" src="{{ asset('img/logo-old.jpg') }}" alt="">
                 </x-nav-link>
             </div>
 
@@ -182,7 +181,8 @@
                 @endfor
 
                 <li class="relative m-4 border-b-2">
-                    <div class="text-center rounded-full border px-4 mb-4 w-32 font-black" style="background-color: #bbaf7b">
+                    <div class="text-center rounded-full border px-4 mb-4 w-32 font-black"
+                        style="background-color: #bbaf7b">
                         Total : {{ $total . '€' }}
                     </div>
                 </li>
@@ -190,7 +190,8 @@
                 <input type="hidden" name="total" value="{{ $total }}">
 
                 <li class="relative m-4 border-b-2">
-                    <button type="submit" class="text-black text-center rounded-full px-4 py-2 mb-4 w-32 font-bold" style="background-color: #bdd5f8">
+                    <button type="submit" class="text-black text-center rounded-full px-4 py-2 mb-4 w-32 font-bold"
+                        style="background-color: #bdd5f8">
                         Commander
                     </button>
                 </li>
@@ -202,7 +203,7 @@
         @endif
         {{-- check if user is autenticated and show login route if not --}}
         @if (Auth::user() === null)
-            <li class="relative m-4 border-b-2">
+            <li class="relative m-4 mt-8 border-b-2">
                 <p class="text-center px-4 mb-4">
                     Merci de bien vouloir vous connecter avant de commander pour donner votre avis et obtenir des
                     cadeaux
@@ -210,7 +211,8 @@
             </li>
             <li class="relative m-4">
                 <a href="{{ route('login') }}">
-                    <button class="text-black text-center rounded-full px-4 py-2 mb-4 w-40" style="background-color: #bdd5f8">
+                    <button class="text-black text-center rounded-full px-4 py-2 mb-4 w-40"
+                        style="background-color: #bdd5f8">
                         Se connecter
                     </button>
                 </a>

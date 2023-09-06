@@ -55,13 +55,13 @@
         <x-input-error :messages="$errors->get('city')" class="mt-2" />
     </div>
 
-    <div class="flex flex-col m-4">
+    {{-- <div class="flex flex-col m-4">
         <x-input-label for="square" :value="__('Rue')" />
 
         <x-text-input id="square" type="text" name="square" value="{{ Auth::user()->square }}" readonly />
 
         <x-input-error :messages="$errors->get('square')" class="mt-2" />
-    </div>
+    </div> --}}
 
     <div class="flex flex-col m-4">
         <x-input-label for="address" :value="__('Adresse')" />

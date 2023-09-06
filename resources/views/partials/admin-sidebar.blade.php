@@ -2,11 +2,10 @@
 <nav id="sidenav-1"
     class="absolute left-0 top-0 z-[1035] h-full w-60 lg:-translate-x-0 sm:-translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-gray-800"
     data-te-sidenav-init data-te-sidenav-hidden="true" data-te-sidenav-position="absolute">
-    <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
-
-        <div class="flex items-center justify-center" href="#">
-            <img class="w-32" src="{{ asset('img/logo.jpg') }}" alt="" srcset="">
-        </div>
+    <ul class="relative m-0 mt-4 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
+        {{-- <div class="flex items-center justify-center" href="#">
+            <img class="w-14 m-4" src="{{ asset('img/logo.jpg') }}" alt="" srcset="">
+        </div> --}}
 
         <li class="relative">
             <a href="{{ route('admin.dashboard') }}"

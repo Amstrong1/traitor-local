@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         return view('user.index');
     }
-    
+
     public function legal()
     {
         return view('user.legal');
@@ -118,16 +118,23 @@ class UserController extends Controller
 
     public function removeProduct($session_product)
     {
-        $cloud = array();
-        for ($i = 0; $i < sizeof(session('cart')); $i++) {
-            if (session('cart')[$i]['productId'] !== $session_product) {
-                $cloud[$i] = session('cart')[$i];
+        if (session('cart') !== null) {
+            for ($i = 0; $i < sizeof(session('cart')); $i++) {
+                if (session('cart')[$i]['productId'] !== $session_product) {
+                    $cloud[] = session('cart')[$i];
+                }
+            }
+
+            Session::forget('cart');
+
+            if (isset($cloud)) {
+                if (sizeof($cloud) !== 0) {
+                    for ($i = 0; $i < sizeof($cloud); $i++) {
+                        Session::push('cart', $cloud[$i]);
+                    }
+                }
             }
         }
-
-        Session::forget('cart');
-
-        Session::push('cart', $cloud);
 
         return back();
     }

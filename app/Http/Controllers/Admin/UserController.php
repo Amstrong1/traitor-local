@@ -23,7 +23,7 @@ class UserController extends Controller
             'name' => 'Nom',
             'email' => 'Email',
             'city' => 'Ville',
-            'square' => 'Rue',
+            // 'square' => 'Rue',
             'address' => 'Adresse',
         ];
         return $columns;

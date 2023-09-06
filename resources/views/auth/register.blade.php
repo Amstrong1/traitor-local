@@ -27,11 +27,11 @@
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4 ">
+        {{-- <div class="mt-4 ">
             <x-input-label for="square" :value="__('Rue')" />
             <x-text-input id="square" type="text" name="square" :value="old('square')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('square')" class="mt-2" />
-        </div>
+        </div> --}}
 
         <!-- Email Address -->
         <div class="mt-4 ">
@@ -70,7 +70,7 @@
         </div>
         
         <a class="mt-4  block underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-            {{ __('Déja inscrit ?') }}
+            {{ __('Déjà inscrit ?') }}
         </a>
     </form>
 </x-user-app>
