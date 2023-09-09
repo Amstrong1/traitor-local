@@ -34,7 +34,7 @@
     <div class="flex flex-col m-4">
         <x-input-label for="name" :value="__('Nom')" />
 
-        <x-text-input id="name" type="text" name="name" value="{{ Auth::user()->name }}" readonly />
+        <x-text-input id="name" type="text" name="name" max="50" value="{{ Auth::user()->name }}" readonly />
 
         <x-input-error :messages="$errors->get('name')" class="mt-2" />
     </div>

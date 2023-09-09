@@ -17,6 +17,7 @@
     <!-- Scripts -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
@@ -36,12 +37,13 @@
                             <div class="g-0 lg:flex lg:flex-wrap">
                                 <!-- Left column container-->
                                 <div class="p-4 md:px-0 lg:w-6/12">
-                                    <div class="md:m-6 md:px-12 md:py-6">
+                                    <div class="md:m-4 md:px-12 md:py-6">
                                         <!--Logo-->
                                         <div class="text-center">
-                                            <img class="mx-auto w-48"
-                                                src="{{ asset('img/logo.jpg') }}"
-                                                alt="logo" />
+                                            <a href="/">
+                                                <img class="mx-auto w-40" src="{{ asset('img/logo.png') }}"
+                                                    alt="logo" />
+                                            </a>
                                             <h4 class="mb-12 mt-1 pb-1 text-xl font-semibold">
                                                 Traiteur Local
                                             </h4>
@@ -59,7 +61,10 @@
                                             Traiteur Local
                                         </h4>
                                         <p class="text-sm">
-                                            Offrez un festin de saveurs à portée de main avec notre application. Partagez votre passion et savoir faire de délices culinaires sur mesure, directement à la table de vos clients. Simplifiez la planification de vos événements et donnez une symphonie de goûts grâce à notre plateforme.
+                                            Offrez un festin de saveurs à portée de main avec notre application.
+                                            Partagez votre passion et savoir faire de délices culinaires sur mesure,
+                                            directement à la table de vos clients. Simplifiez la planification de vos
+                                            événements et donnez une symphonie de goûts grâce à notre plateforme.
                                         </p>
                                     </div>
                                 </div>

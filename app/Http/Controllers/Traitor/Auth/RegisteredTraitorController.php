@@ -33,9 +33,9 @@ class RegisteredTraitorController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . Traitor::class],
             'contact' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
-            'square' => ['required', 'string', 'max:255'],
+            // 'square' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'postal' => ['required', 'string', 'max:8'],
+            'postal' => ['required', 'string', 'max:5'],
         ]);
 
         $traitor = Traitor::create([
@@ -44,7 +44,7 @@ class RegisteredTraitorController extends Controller
             'company' => $request->company,
             'contact' => $request->contact,
             'city' => $request->city,
-            'square' => $request->square,
+            // 'square' => $request->square,
             'address' => $request->address,
             'postal' => $request->postal,
             'status' => 'pending',

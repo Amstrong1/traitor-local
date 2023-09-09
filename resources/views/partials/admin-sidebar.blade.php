@@ -4,7 +4,7 @@
     data-te-sidenav-init data-te-sidenav-hidden="true" data-te-sidenav-position="absolute">
     <ul class="relative m-0 mt-4 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
         {{-- <div class="flex items-center justify-center" href="#">
-            <img class="w-14 m-4" src="{{ asset('img/logo.jpg') }}" alt="" srcset="">
+            <img class="w-14 m-4" src="{{ asset('img/logo.png') }}" alt="" srcset="">
         </div> --}}
 
         <li class="relative">

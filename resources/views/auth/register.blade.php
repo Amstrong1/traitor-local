@@ -8,7 +8,7 @@
         <!-- Name -->
         <div class="">
             <x-input-label for="name" :value="__('Nom')" />
-            <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-text-input id="name" type="text" name="name" max="50" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
@@ -36,7 +36,7 @@
         <!-- Email Address -->
         <div class="mt-4 ">
             <x-input-label for="address" :value="__('Adresse')" />
-            <x-text-input id="address" type="text" name="address" :value="old('square')" required autocomplete="username" />
+            <x-text-input id="address" type="text" name="address" :value="old('address')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 

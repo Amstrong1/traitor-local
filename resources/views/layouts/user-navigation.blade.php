@@ -54,7 +54,7 @@
             <!-- Navigation Links -->
             <div class="flex items-center">
                 <x-nav-link :href="route('home.index')">
-                    <img class="w-14" src="{{ asset('img/logo-old.jpg') }}" alt="">
+                    <img class="w-14" src="{{ asset('img/logo.png') }}" alt="">
                 </x-nav-link>
             </div>
 
@@ -98,6 +98,9 @@
     class="bg-black opacity-80 text-white rounded-tr-xl fixed left-0 top-16 z-[1035] h-full w-60 -translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='true']:translate-x-0 dark:bg-zinc-800"
     data-te-sidenav-init data-te-sidenav-hidden="false">
     <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
+        <li class="relative m-4 text-center">
+            <a href="{{ url('/home') }}">Site Internet</a>
+        </li>
         @auth
             <li class="relative mx-4 my-6 text-center">
                 <a href="{{ route('user.profil') }}">Mon Profil</a>
@@ -117,9 +120,6 @@
         @endauth
         <li class="relative mx-4 my-6 text-center">
             <a href="{{ route('home.legal') }}">Mentions légales</a>
-        </li>
-        <li class="relative m-4 text-center">
-            <a href="{{ url('/home') }}">Site Internet</a>
         </li>
     </ul>
 </nav>
