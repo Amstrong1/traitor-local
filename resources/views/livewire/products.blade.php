@@ -1,6 +1,11 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
 
+    @php
+        $ip = request()->ip();
+        $currentUserInfo = Location::get($ip);
+    @endphp
+
     <div class="text-center mt-2 py-1 mx-auto rounded-full w-3/4"
         style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
         <select id="type_id" name="type" wire:model="type_id" wire:change="updateType($event.target.value)"
@@ -37,7 +42,11 @@
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                                 </svg> &nbsp;
-                                {{ $product->traitor->city }} <span class="italic">5 km</span>
+                                {{ $product->traitor->city }}
+                                <span class="italic">
+                                    {{ number_format(distance($currentUserInfo->latitude, $currentUserInfo->longitude, $product->traitor->latitude, $product->traitor->longitude, 'k'), 0, '', '') }}
+                                    km
+                                </span>
                             </div>
                             <div class="flex justify-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

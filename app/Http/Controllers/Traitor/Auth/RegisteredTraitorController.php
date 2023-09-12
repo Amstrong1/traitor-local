@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
+use Stevebauman\Location\Facades\Location;
 use App\Notifications\NewTraitorRegistration;
 
 class RegisteredTraitorController extends Controller
@@ -38,6 +39,9 @@ class RegisteredTraitorController extends Controller
             'postal' => ['required', 'string', 'max:5'],
         ]);
 
+        $ip = $request->ip();
+        $currentUserInfo = Location::get($ip);
+
         $traitor = Traitor::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -48,6 +52,8 @@ class RegisteredTraitorController extends Controller
             'address' => $request->address,
             'postal' => $request->postal,
             'status' => 'pending',
+            'latitude' => $currentUserInfo->latitude,
+            'longitude' => $currentUserInfo->longitude,
         ]);
 
         event(new Registered($traitor));

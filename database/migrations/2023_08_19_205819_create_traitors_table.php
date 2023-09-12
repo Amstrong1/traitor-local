@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('status');
             $table->string('password')->nullable();
             $table->string('message')->nullable();
+            $table->string('latitude');
+            $table->string('longitude');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

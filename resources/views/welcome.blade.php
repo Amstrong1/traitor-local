@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<html lang="en">
+<html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Traiteur Local Landing Page</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Font Awesome if you need it
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
- -->
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!--Replace with your tailwind.css once created-->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <script src="{{ asset('js/script.js') }}"></script>
 
 </head>
 
 
-<body class="leading-normal tracking-normal text-gray-900" style="font-family: 'Source Sans Pro', sans-serif;">
-
+<body class="font-sans text-gray-900 antialiased">
     <header>
         <div class="-skew-y-6 mb-16 h-full w-full" style="background-color: #bbaf7b">
             <div class="skew-y-6">
@@ -70,9 +67,17 @@
                                     </div>
 
                                     <div class="flex justify-end content-center">
-                                        <a class="inline-block text-white no-underline hover:text-indigo-200 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 "
+                                        <a class="flex text-white no-underline hover:text-indigo-200 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 "
                                             href="#contact" data-te-nav-link-ref data-te-ripple-init
-                                            data-te-ripple-color="light">Rejoignez nous</a>
+                                            data-te-ripple-color="light">
+                                            Rejoignez nous &nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                                            </svg>
+
+                                        </a>
                                     </div>
 
                                 </div>
@@ -82,14 +87,14 @@
                     </div>
                 </nav>
 
-                <div class="px-14 mx-auto flex flex-wrap flex-col md:flex-row items-center h-fit">
+                <div class="px-8 md:px-14 mx-auto flex flex-wrap flex-col md:flex-row items-center h-fit py-6 my-8">
                     <!--Left Col-->
                     <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
                         <h1
-                            class="my-4 text-3xl md:text-5xl text-white font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
+                            class="my-4 text-3xl md:text-4xl text-white font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
                             Trouver des traiteurs proches de chez vous</h1>
                         <p
-                            class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
+                            class="leading-normal text-base md:text-xl mb-8 text-center md:text-left slide-in-bottom-subtitle">
                             Explorer de nouvelles saveurs et cuisines sans quitter votre maison en commandant en ligne
                             avec
                             Traiteur Local
@@ -107,8 +112,68 @@
                     </div>
 
                     <!--Right Col-->
-                    <div class="w-full xl:w-3/5 py-6 overflow-y-hidden">
-                        <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="{{ asset('img/banner.png') }}">
+                    <div class="hidden md:block w-full xl:w-3/5 overflow-y-hidden py-6">
+                        {{-- <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="{{ asset('img/banner.png') }}"> --}}
+                        <div id="carouselDarkVariant" class="relative" data-te-carousel-init data-te-ride="carousel">
+
+                            <!-- Carousel items -->
+                            <div
+                                class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+                                <!-- First item -->
+                                <div class="relative float-left -mr-[100%] w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                                    data-te-carousel-fade data-te-carousel-item data-te-carousel-active>
+                                    <img src="{{ asset('img/slide-entree.png') }}" class="block w-1/2 mx-auto"
+                                        alt="slide-entree" />
+                                </div>
+                                <!-- Second item -->
+                                <div class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                                    data-te-carousel-fade data-te-carousel-item>
+                                    <img src="{{ asset('img/slide-plat.png') }}" class="block w-1/2 mx-auto"
+                                        alt="slide-plat" />
+                                </div>
+                                <!-- Third item -->
+                                <div class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                                    data-te-carousel-fade data-te-carousel-item>
+                                    <img src="{{ asset('img/slide-dessert.png') }}" class="block w-1/2 mx-auto"
+                                        alt="slide-dessert" />
+                                </div>
+                                <!-- Third item -->
+                                <div class="relative float-left -mr-[100%] hidden w-full !transform-none opacity-0 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+                                    data-te-carousel-fade data-te-carousel-item>
+                                    <img src="{{ asset('img/slide-boisson.jpg') }}"
+                                        class="block w-1/2 mx-auto rounded-full" alt="slide-boisson" />
+                                </div>
+                            </div>
+
+                            <!-- Carousel controls - prev item-->
+                            <button
+                                class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-black opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-black hover:no-underline hover:opacity-90 hover:outline-none focus:text-black focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                                type="button" data-te-target="#carouselDarkVariant" data-te-slide="prev">
+                                <span class="inline-block h-8 w-8 dark:grayscale">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                    </svg>
+                                </span>
+                                <span
+                                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
+                            </button>
+                            <!-- Carousel controls - next item-->
+                            <button
+                                class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-black opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-black hover:no-underline hover:opacity-90 hover:outline-none focus:text-black focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                                type="button" data-te-target="#carouselDarkVariant" data-te-slide="next">
+                                <span class="inline-block h-8 w-8 dark:grayscale">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                    </svg>
+                                </span>
+                                <span
+                                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -230,33 +295,30 @@
                                 @csrf
 
                                 <!--Name input-->
-                                <div class="relative mb-6" data-te-input-wrapper-init>
-                                    <input type="text"
-                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                                        id="exampleInput7" placeholder="Nom" />
-                                    <label for="exampleInput7"
-                                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Nom
+                                <div class="relative mb-6">
+                                    <label for="exampleInput7" class="">Nom
                                     </label>
+                                    <input type="text"
+                                        class="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                        id="exampleInput7" />
                                 </div>
 
                                 <!--Email input-->
-                                <div class="relative mb-6" data-te-input-wrapper-init>
-                                    <input type="email"
-                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                                        id="exampleInput8" placeholder="Email" />
-                                    <label for="exampleInput8"
-                                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Email
+                                <div class="relative mb-6">
+                                    <label for="exampleInput8" class="">Email
                                     </label>
+                                    <input type="email"
+                                        class="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                        id="exampleInput8" placeholder="Email" />
                                 </div>
 
                                 <!--Message textarea-->
-                                <div class="relative mb-6" data-te-input-wrapper-init>
-                                    <textarea
-                                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                                        id="exampleFormControlTextarea13" rows="3" placeholder="Message"></textarea>
-                                    <label for="exampleFormControlTextarea13"
-                                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Message
+                                <div class="relative mb-6">
+                                    <label for="exampleFormControlTextarea13" class="">Message
                                     </label>
+                                    <textarea
+                                        class="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                        id="exampleFormControlTextarea13" rows="3" placeholder="Message"></textarea>
                                 </div>
 
                                 <!--Checkbox-->
@@ -292,8 +354,8 @@
             <div class="">
                 <a class="text-white no-underline hover:no-underline" href="#">Mentions Légales</a> <span
                     class="text-white"> | </span>
-                <a class="text-white no-underline hover:no-underline" href="#">Condition Générales d'utilisation</a> <span
-                    class="text-white"> | </span>
+                <a class="text-white no-underline hover:no-underline" href="#">Condition Générales
+                    d'utilisation</a> <span class="text-white"> | </span>
                 <a class="text-white no-underline hover:no-underline" href="#">Conditions Générales de vente</a>
             </div>
 

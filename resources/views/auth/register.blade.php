@@ -63,6 +63,9 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <!-- Google Recaptcha -->
+        <div class="g-recaptcha mt-4" data-sitekey={{ config('services.recaptcha.key') }}></div>
+
         <div class="flex items-center justify-center mt-4">
             <x-primary-button class="ml-3 bg-black">
                 {{ __('Valider') }}
