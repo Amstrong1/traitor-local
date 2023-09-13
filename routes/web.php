@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\User\UserController;
@@ -21,7 +22,13 @@ Route::post('password/first/update/{id}', [PasswordController::class, 'update'])
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::post('contact-us', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 Route::match(['get', 'post'], '/home', [UserController::class, 'index'])->name('home.index');
 Route::match(['get', 'post'], '/home/products', [UserController::class, 'indexProducts'])->name('home.products');

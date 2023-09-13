@@ -44,8 +44,7 @@
                                 </svg> &nbsp;
                                 {{ $product->traitor->city }}
                                 <span class="italic">
-                                    {{ number_format(distance($currentUserInfo->latitude, $currentUserInfo->longitude, $product->traitor->latitude, $product->traitor->longitude, 'k'), 0, '', '') }}
-                                    km
+                                    {{ number_format(distance($currentUserInfo->latitude, $currentUserInfo->longitude, $product->traitor->latitude, $product->traitor->longitude, 'k'), 0, '', '') . 'km' ?? '' }}
                                 </span>
                             </div>
                             <div class="flex justify-start">
