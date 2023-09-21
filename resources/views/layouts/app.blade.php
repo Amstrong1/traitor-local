@@ -23,7 +23,7 @@
 <body class="font-sans antialiased">
     @include('partials.preloader')
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        <div class="flex h-screen overflow-hidden">
+        <div class="flex h-screen">
             @include('partials.sidenav')
             <div class="lg:ml-60 relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
                 @include('layouts.navigation')
@@ -36,7 +36,7 @@
                     </header>
                 @endif
                 <!-- Page Content -->
-                <main>
+                <main class="pb-12">
                     {{ $slot }}
                 </main>
             </div>
