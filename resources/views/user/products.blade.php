@@ -1,6 +1,6 @@
 <x-user-app>
 
-    <form class="text-center mt-6" action="" method="post">
+    <form class="text-center mt-16" action="" method="post">
         @csrf
         <div class="flex flex-nowrap rounded-full justify-around w-3/4 mx-auto outline-0 focus:outline-0 active:outline-0 p-1"
             style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">

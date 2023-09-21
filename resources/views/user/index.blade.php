@@ -1,6 +1,6 @@
 <x-user-app>
 
-    <h1 class="my-4 p-4 text-center">Trouver des traiteurs proches de chez vous</h1>
+    <h1 class="mt-8 mb-4 p-4 text-center">Trouver des traiteurs proches de chez vous</h1>
 
     <form class="text-center" action="{{ route('home.products') }}" method="post">
         @csrf
