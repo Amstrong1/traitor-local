@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="w-full dark:border-gray-700 fixed z-10" style="background-color: #4f4949">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-20">
             {{-- hamburger icon --}}
             <div class="flex items-center">
                 @if (request()->routeIs('home.show.product'))
@@ -95,7 +95,7 @@
 
 <!-- Sidenav right (nav menu)-->
 <nav id="menu"
-    class="bg-black opacity-80 text-white rounded-tr-xl fixed left-0 top-16 z-[1035] h-full w-60 -translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='true']:translate-x-0 dark:bg-zinc-800"
+    class="bg-black opacity-80 text-white rounded-tr-xl fixed left-0 top-16 mt-4 z-[1035] h-full w-60 -translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='true']:translate-x-0 dark:bg-zinc-800"
     data-te-sidenav-init data-te-sidenav-hidden="false">
     <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
         <li class="relative m-4 text-center">
@@ -127,7 +127,7 @@
 
 <!-- Sidenav left (cart)-->
 <nav id="cart"
-    class="bg-black opacity-90 text-white rounded-tl-xl fixed right-0 top-16 z-[1035] h-full w-60 translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='true']:-translate-x-0 dark:bg-zinc-800 overflow-x-auto pb-16"
+    class="bg-black opacity-90 text-white rounded-tl-xl fixed right-0 top-16 mt-4 z-[1035] h-full w-60 translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='true']:-translate-x-0 dark:bg-zinc-800 overflow-x-auto pb-16"
     data-te-sidenav-init data-te-sidenav-hidden="false" data-te-sidenav-right="true">
     <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
         {{-- check if user add product in cart  --}}
