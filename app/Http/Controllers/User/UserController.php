@@ -42,6 +42,11 @@ class UserController extends Controller
     {
         $product = Product::find($id);
 
+         // generation de id facture pk
+         if (!$request->session()->has('product_count')) {
+            $request->session()->put('product_count', 0);
+        }
+
         if (request()->method() === 'POST') {
             $validated = $request->validate([
                 'quantity' => 'required',
@@ -50,6 +55,7 @@ class UserController extends Controller
             ]);
 
             $cart = [
+                'id' => session('product_count'),
                 'productId' => $request->productId,
                 'productName' => $request->productName,
                 'quantity' => $request->quantity,
@@ -60,6 +66,8 @@ class UserController extends Controller
             ];
 
             Session::push('cart', $cart);
+            $request->session()->put('product_count', $request->session()->get('product_count') + 1);
+            Alert::toast('Produit ajouté', 'success');
             return back()->with(['product' => $product]);
         } else {
             return view('user.product-detail', compact('product'));
@@ -125,7 +133,7 @@ class UserController extends Controller
     {
         if (session('cart') !== null) {
             for ($i = 0; $i < sizeof(session('cart')); $i++) {
-                if (session('cart')[$i]['productId'] !== $session_product) {
+                if (session('cart')[$i]['id'] !== intval($session_product)) {
                     $cloud[] = session('cart')[$i];
                 }
             }
@@ -141,6 +149,7 @@ class UserController extends Controller
             }
         }
 
+        Alert::toast('Produit retiré du panier', 'error');
         return back();
     }
 

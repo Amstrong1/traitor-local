@@ -151,7 +151,7 @@
                                         Prix : {{ session('cart')[$i]['subTotal'] }}€
                                     </p>
                                 </div>
-                                <a href="{{ route('remove.product', [session('cart')[$i]['productId']]) }}">
+                                <a href="{{ route('remove.product', [session('cart')[$i]['id']]) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -175,15 +175,15 @@
                         <textarea class="hidden" name="note{{ $i }}" value="{{ session('cart')[$i]['note'] }}"></textarea>
 
                         @php
-                            $total += session('cart')[$i]['subTotal'];
+                            $total += floatval(str_replace(' ', '', session('cart')[$i]['subTotal']));
                         @endphp
                     @endif
                 @endfor
 
                 <li class="relative m-4 border-b-2">
-                    <div class="text-center rounded-full border px-4 mb-4 w-32 font-black"
+                    <div class="text-center rounded-full border px-4 mb-4 w-max font-black"
                         style="background-color: #bbaf7b">
-                        Total : {{ $total . '€' }}
+                        Total : {{ number_format($total, 2, '.', ' ') . '€' }}
                     </div>
                 </li>
 
