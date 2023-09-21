@@ -12,6 +12,8 @@ class Traitor extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guard = 'traitor';
+
     protected $guarded = [];
 
    

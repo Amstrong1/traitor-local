@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="w-full bg-black dark:border-gray-700 fixed z-10">
+<nav x-data="{ open: false }" class="w-full dark:border-gray-700 fixed z-10" style="background-color: #4f4949">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -127,8 +127,8 @@
 
 <!-- Sidenav left (cart)-->
 <nav id="cart"
-    class="bg-black opacity-90 text-white rounded-tl-xl fixed right-0 top-16 z-[1035] h-full w-60 translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:-translate-x-0 dark:bg-zinc-800 overflow-x-auto pb-16"
-    data-te-sidenav-init data-te-sidenav-hidden="true" data-te-sidenav-right="true">
+    class="bg-black opacity-90 text-white rounded-tl-xl fixed right-0 top-16 z-[1035] h-full w-60 translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='true']:-translate-x-0 dark:bg-zinc-800 overflow-x-auto pb-16"
+    data-te-sidenav-init data-te-sidenav-hidden="false" data-te-sidenav-right="true">
     <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
         {{-- check if user add product in cart  --}}
         {{-- And display its  --}}
@@ -197,7 +197,7 @@
                 </li>
             </form>
         @else
-            <p class="text-center px-4 mb-4">
+            <p class="text-center p-4 mb-4">
                 Votre panier est vide
             </p>
         @endif
@@ -205,8 +205,8 @@
         @if (Auth::user() === null)
             <li class="relative m-4 mt-8 border-b-2">
                 <p class="text-center px-4 mb-4">
-                    Merci de bien vouloir vous connecter avant de commander pour donner votre avis et obtenir des
-                    cadeaux
+                    {{-- Merci de bien vouloir vous connecter avant de commander pour donner votre avis et obtenir des
+                    cadeaux --}}
                 </p>
             </li>
             <li class="relative m-4">

@@ -29,7 +29,7 @@ Route::middleware('admin')->group(function () {
         Route::get('/traitors/show/{id}', [TraitorController::class, 'show'])->name('traitors.show');
         Route::post('/traitors/allow/{id}', [TraitorController::class, 'allow'])->name('traitors.allow');
         Route::post('/traitors/deny/{id}', [TraitorController::class, 'deny'])->name('traitors.deny');
-        Route::post('/traitors/delete/{id}', [TraitorController::class, 'destroy'])->name('traitors.destroy');
+        Route::delete('/traitors/delete/{id}', [TraitorController::class, 'destroy'])->name('traitors.destroy');
 
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
     });    

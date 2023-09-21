@@ -22,8 +22,6 @@
 </head>
 
 <body class="font-sans antialiased">
-    @include('cookie-consent::index')
-
     @include('partials.preloader')
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         <div class="flex h-screen overflow-hidden">
@@ -46,7 +44,16 @@
         </div>
     </div>
 
+    @include('sweetalert::alert')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script defer src="{{ asset('js/main.js') }}"></script>
+
 </body>
 
 </html>

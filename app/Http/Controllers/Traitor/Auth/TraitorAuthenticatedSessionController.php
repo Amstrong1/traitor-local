@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Traitor\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Traitor\LoginRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\Traitor\LoginRequest;
 
 class TraitorAuthenticatedSessionController extends Controller
 {
@@ -38,6 +39,8 @@ class TraitorAuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('traitor')->logout();
+
+        Session::flush();
 
         $request->session()->invalidate();
 

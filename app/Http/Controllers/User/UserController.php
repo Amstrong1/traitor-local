@@ -33,6 +33,11 @@ class UserController extends Controller
         }
     }
 
+    public function indexProductsGeo()
+    {
+        return view('user.products');
+    }
+
     public function showProduct(Request $request, $id)
     {
         $product = Product::find($id);

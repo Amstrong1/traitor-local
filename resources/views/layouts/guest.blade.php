@@ -49,13 +49,13 @@
                                 </div>
 
                                 <!-- Right column container with background and description-->
-                                <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
-                                    style="background: linear-gradient(to right, #bbaf7b, #bbaf7b, #bbaf7b, #bbaf7b);">
-                                    <div class="px-4 py-6 text-white md:mx-6 md:p-12">
-                                        <h4 class="mb-6 text-xl font-semibold">
+                                <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-nonebg-fixed bg-center bg-cover"
+                                    style="background-image:url('img/parallax.jpg');">
+                                    <div class="flex flex-col items-center justify-center w-full h-full p-8" style="background-color: rgba(187, 175, 123, .6)">
+                                        <h4 class="text-white mb-6 text-xl font-semibold">
                                             Traiteur Local
                                         </h4>
-                                        <p class="text-sm">
+                                        <p class="text-sm text-white">
                                             Offrez un festin de saveurs à portée de main avec notre application.
                                             Partagez votre passion et savoir faire de délices culinaires sur mesure,
                                             directement à la table de vos clients. Simplifiez la planification de vos
@@ -69,9 +69,9 @@
                 </div>
             </div>
         </section>
-    </div>   
+    </div>
 
-    <script async src="https://www.google.com/recaptcha/api.js"></script>
+    <script async src="//www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
             document.getElementById("form").submit();

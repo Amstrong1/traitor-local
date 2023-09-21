@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Admin\LoginRequest;
 
 class AdminAuthenticatedSessionController extends Controller
@@ -38,6 +39,8 @@ class AdminAuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('admin')->logout();
+
+        Session::flush();
 
         $request->session()->invalidate();
 

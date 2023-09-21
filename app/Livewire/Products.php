@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Traitor;
 use Livewire\Component;
+use Stevebauman\Location\Facades\Location;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 class Products extends Component
@@ -26,8 +27,28 @@ class Products extends Component
 
     public function mount()
     {
-        session(['city' => request()->city]);
-        $traitors = Traitor::where('city', 'LIKE', '%' . request()->city . '%')->get();
+        if (isset(request()->city)) {
+            $city = request()->city;
+        } else {
+            $ip = request()->ip();
+            $currentUserInfo = Location::get($ip);
+            if ($currentUserInfo !== false) {
+                $city = $currentUserInfo->cityName;
+            } else {
+                $city = 'all';
+            }
+            
+        }
+        
+        session(['city' => $city]);
+
+
+        if ($city !== 'all') {
+            $traitors = Traitor::where('city', 'LIKE', '%' . $city . '%')->get();
+        } else {
+            $traitors = Traitor::all();
+        }
+        
         $products = new EloquentCollection();
         foreach ($traitors as $traitor) {
             $products[] = $traitor->products()->get();

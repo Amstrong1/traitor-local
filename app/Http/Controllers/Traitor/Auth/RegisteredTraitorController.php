@@ -34,7 +34,6 @@ class RegisteredTraitorController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . Traitor::class],
             'contact' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
-            // 'square' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'postal' => ['required', 'string', 'max:5'],
         ]);
@@ -42,18 +41,22 @@ class RegisteredTraitorController extends Controller
         $ip = $request->ip();
         $currentUserInfo = Location::get($ip);
 
+        if ($currentUserInfo === false) {
+            $latitude = 48.858370;
+            $longitude = 2.294481;
+        }
+
         $traitor = Traitor::create([
             'name' => $request->name,
             'email' => $request->email,
             'company' => $request->company,
             'contact' => $request->contact,
             'city' => $request->city,
-            // 'square' => $request->square,
             'address' => $request->address,
             'postal' => $request->postal,
             'status' => 'pending',
-            'latitude' => $currentUserInfo->latitude,
-            'longitude' => $currentUserInfo->longitude,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
         ]);
 
         event(new Registered($traitor));
