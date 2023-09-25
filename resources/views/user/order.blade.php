@@ -1,14 +1,14 @@
 <x-user-app>
-    <h1 class="m-4 font-bold">Mes commandes</h1>
+    <h1 class="mt-16 mb-4 mx-4 font-bold">Mes commandes</h1>
     @if ($orders->count() !== 0)
         @foreach ($orders as $order)
             <div class="flex flex-col my-6">
                 <h5 class="mx-4">Le {{ getFormattedDate($order->updated_at) }}</h5>
                 <a href="{{ route('order.product', [$order->id]) }}">
                     <div class="flex flex-row my-4">
-                        <div class="flex items-center w-1/4 justify-start">
+                        <div class="flex items-center w-1/4 justify-center">
                             <div class="w-14 h-14">
-                                <img src="{{ asset('storage/' . $order->product->image) }}" alt="..."
+                                <img src="{{ asset('storage/' . $order->product->image) }}" alt="{{ $order->product->image }}"
                                     class="shadow rounded-full w-full h-full align-middle border-none" />
                             </div>
                         </div>

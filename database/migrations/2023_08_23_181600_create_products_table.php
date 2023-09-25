@@ -16,12 +16,13 @@ return new class extends Migration
             $table->foreignId('traitor_id')->constrained();
             $table->string('type');
             $table->string('name');
-            $table->string('price');
+            $table->decimal('price', 8, 2);
             $table->string('notice')->nullable();
             $table->string('min_order_qte');
             $table->string('preparation_delay');
             $table->string('image');
             $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

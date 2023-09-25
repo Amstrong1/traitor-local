@@ -14,6 +14,10 @@
         $watch('password', value => { validate('password') })">
         @csrf
 
+        {{-- lat and long hidden input --}}
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+
         <!-- Name -->
         <div class="">
             <x-input-label for="name" :value="__('Nom du propriétaire/gérant')" />
@@ -76,7 +80,7 @@
             <x-input-error :messages="$errors->get('square')" class="mt-2" />
         </div> --}}
 
-        <!-- contact Address -->
+        <!-- postal code -->
         <div class="mt-4">
             <x-input-label for="postal" :value="__('Code Postal')" />
             <x-text-input x-model="postal" id="postal" class="block mt-1 w-full" type="text" name="postal"
@@ -112,7 +116,7 @@
         <div class="mt-4">
             <div class="flex justify-start">
                 <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                    href="{{ url()->previous() }}">
+                    href="/">
                     {{ __('Retour') }}
                 </a>
             </div>

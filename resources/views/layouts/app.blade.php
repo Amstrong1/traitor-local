@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body onload="geolocal()" class="font-sans antialiased">
     @include('partials.preloader')
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         <div class="flex h-screen overflow-hidden">
@@ -51,7 +51,8 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-    <script defer src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/geolocation.js') }}"></script>
 
 </body>
 

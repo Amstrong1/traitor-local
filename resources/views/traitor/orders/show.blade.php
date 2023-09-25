@@ -4,13 +4,13 @@
         <!-- Breadcrumb Start -->
         <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Form Layout
+                Commandes
             </h2>
 
             <nav>
                 <ol class="flex items-center gap-2 dark:text-white">
-                    <li><a class="font-medium" href="index.html">Dashboard /</a></li>
-                    <li class="font-medium text-primary">Form Layout</li>
+                    <li><a class="font-medium" href="">Tableau de bord /</a></li>
+                    <li class="font-medium text-primary">Données de la commande</li>
                 </ol>
             </nav>
         </div>

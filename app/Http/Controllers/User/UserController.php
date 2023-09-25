@@ -103,7 +103,7 @@ class UserController extends Controller
                 $order->traitor_id = $product->traitor->id;
                 $order->product_id = $product->id;
                 $order->quantity = $request->input('productQte' . $i);
-                $order->amount = $request->input('productSubTotal' . $i);
+                $order->amount = floatval($request->input('productSubTotal' . $i));
                 $order->delivery_place = Auth::user()->city . ', ' . Auth::user()->address;
                 $order->delivery_date = $request->input('deliveryDate' . $i);
                 $order->delivery_hour = $request->input('deliveryHour' . $i);

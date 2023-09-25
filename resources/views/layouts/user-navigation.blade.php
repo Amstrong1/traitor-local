@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-24">
             {{-- hamburger icon --}}
-            <div class="flex items-center">
+            <div class="flex items-center pt-4 -pb-4">
                 @if (request()->routeIs('home.show.product'))
                     <button
                         class="sm:block border-0 bg-transparent px-2 text-white hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-white mr-2">
@@ -52,14 +52,14 @@
             </div>
 
             <!-- Navigation Links -->
-            <div class="flex items-center">
+            <div class="flex items-center pt-4 -pb-4">
                 <x-nav-link :href="route('home.index')">
                     <img class="w-14" src="{{ asset('img/logo.png') }}" alt="">
                 </x-nav-link>
             </div>
 
             {{-- cart icon --}}
-            <div class="flex items-center">
+            <div class="flex items-center pt-4 -pb-4">
                 <button
                     class="sm:block border-0 bg-transparent px-2 text-white hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-white"
                     data-te-sidenav-toggle-ref data-te-target="#cart" aria-controls="#cart" aria-haspopup="true">
@@ -203,7 +203,7 @@
         @endif
         {{-- check if user is autenticated and show login route if not --}}
         @if (Auth::user() === null)
-            <li class="relative m-4 mt-8 border-b-2">
+            <li class="relative m-4 mt-8">
                 <p class="text-center px-4 mb-4">
                     {{-- Merci de bien vouloir vous connecter avant de commander pour donner votre avis et obtenir des
                     cadeaux --}}

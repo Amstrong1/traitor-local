@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Tableau de bord') }}
         </h2>
     </x-slot>
 
@@ -30,13 +30,35 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        {{ $pendingOrdersSum }}€
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                            <path fill-rule="evenodd"
+                                                d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                                clip-rule="evenodd" />
+                                        </svg>
                                     </h4>
-                                    <span class="text-sm font-medium">Commandes en attentes </span>
+                                    <span class="text-sm font-medium">Commandes en attentes</span>
                                 </div>
 
                                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
                                     {{ $pendingOrders->count() }}
+                                    <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4.35716 2.47737L0.908974 5.82987L5.0443e-07 4.94612L5 0.0848689L10 4.94612L9.09103 5.82987L5.64284 2.47737L5.64284 10.0849L4.35716 10.0849L4.35716 2.47737Z"
+                                            fill="" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <div class="mt-4 flex items-end justify-between">
+                                <div>
+                                    <span class="text-sm font-medium">Valeur</span>
+                                </div>
+
+                                <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
+                                    {{ $pendingOrdersSum }} €
                                     <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -70,13 +92,35 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        {{ $allowedOrdersSum }}€
+                                        {{-- {{ $allowedOrdersSum }} € --}}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
+                                            <path
+                                                d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z" />
+                                        </svg>
                                     </h4>
                                     <span class="text-sm font-medium">Commandes à livrer</span>
                                 </div>
 
                                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
                                     {{ $allowedOrders->count() }}
+                                    <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4.35716 2.47737L0.908974 5.82987L5.0443e-07 4.94612L5 0.0848689L10 4.94612L9.09103 5.82987L5.64284 2.47737L5.64284 10.0849L4.35716 10.0849L4.35716 2.47737Z"
+                                            fill="" />
+                                    </svg>
+                                </span>
+                            </div>                            
+
+                            <div class="mt-4 flex items-end justify-between">
+                                <div>
+                                    <span class="text-sm font-medium">Valeur</span>
+                                </div>
+
+                                <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
+                                    {{ $allowedOrdersSum }} €
                                     <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -107,13 +151,34 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        {{ $deniedOrdersSum }}€
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                                            <path
+                                                d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+                                        </svg>
                                     </h4>
                                     <span class="text-sm font-medium">Commandes refusées</span>
                                 </div>
 
                                 <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
                                     {{ $deniedOrders->count() }}
+                                    <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4.35716 2.47737L0.908974 5.82987L5.0443e-07 4.94612L5 0.0848689L10 4.94612L9.09103 5.82987L5.64284 2.47737L5.64284 10.0849L4.35716 10.0849L4.35716 2.47737Z"
+                                            fill="" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <div class="mt-4 flex items-end justify-between">
+                                <div>
+                                    <span class="text-sm font-medium">Valeur</span>
+                                </div>
+
+                                <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
+                                    {{ $deniedOrdersSum }} €
                                     <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -147,7 +212,14 @@
                             <div class="mt-4 flex items-end justify-between">
                                 <div>
                                     <h4 class="text-title-md font-bold text-black dark:text-white">
-                                        {{ $deliveredOrdersSum }}€
+                                        {{-- {{ $deliveredOrdersSum }}€ --}}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                            <path fill-rule="evenodd"
+                                                d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
                                     </h4>
                                     <span class="text-sm font-medium">Commandes livrées</span>
                                 </div>
@@ -158,6 +230,22 @@
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M5.64284 7.69237L9.09102 4.33987L10 5.22362L5 10.0849L-8.98488e-07 5.22362L0.908973 4.33987L4.35716 7.69237L4.35716 0.0848701L5.64284 0.0848704L5.64284 7.69237Z"
+                                            fill="" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <div class="mt-4 flex items-end justify-between">
+                                <div>
+                                    <span class="text-sm font-medium">Valeur</span>
+                                </div>
+
+                                <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
+                                    {{ $deliveredOrdersSum }} €
+                                    <svg class="fill-meta-3" width="10" height="11" viewBox="0 0 10 11"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4.35716 2.47737L0.908974 5.82987L5.0443e-07 4.94612L5 0.0848689L10 4.94612L9.09103 5.82987L5.64284 2.47737L5.64284 10.0849L4.35716 10.0849L4.35716 2.47737Z"
                                             fill="" />
                                     </svg>
                                 </span>

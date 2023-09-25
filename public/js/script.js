@@ -10,13 +10,49 @@ window.validateTraitorRegisterForm = function () {
         city: '',
         postal: '',
         validation: {
-            city, company, name: {
+            company, name: {
                 rule: {
                     required: function (field) {
                         if (field) {
                             return { error: false, message: '' }
                         } else {
                             return { error: true, message: 'Ce champ est requis.' }
+                        }
+                    },
+                    minLength: function (field, value = 2) {
+                        if (field && field.length >= value) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: `Ce champ doit contenir ${value} caractères minimun.` }
+                        }
+                    },
+                    maxLength: function (field, value = 255) {
+                        if (field && field.length <= value) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: `Ce champ doit contenir ${value} caractères maximun.` }
+                        }
+                    }
+                },
+                error: true,
+                message: ''
+            },
+
+            city: {
+                rule: {
+                    required: function (field) {
+                        if (field) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: 'Ce champ est requis.' }
+                        }
+                    },
+                    number: function (field) {
+                        const rgx = /(^[0-9])/
+                        if (!rgx.test(field)) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: 'Format du nom de la ville incorrect.' }
                         }
                     },
                     minLength: function (field, value = 2) {
@@ -53,6 +89,14 @@ window.validateTraitorRegisterForm = function () {
                         } else {
                             return { error: true, message: `Ce champ doit contenir ${value} caractères maximun.` }
                         }
+                    },
+                    number: function (field) {
+                        const rgx = /(^[0-9])/
+                        if (rgx.test(field)) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: 'Format du code incorrect.' }
+                        }
                     }
                 },
                 error: true,
@@ -67,9 +111,15 @@ window.validateTraitorRegisterForm = function () {
                             return { error: true, message: 'Ce champ est requis.' }
                         }
                     },
+                    maxLength: function (field, value = 18) {
+                        if (field.length <= value) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: `Ce champ doit contenir ${value} caractères maximun.` }
+                        }
+                    },
                     tel: function (field) {
-                        const rgx = /([+()0-9])$/
-                        if (rgx.test(field)) {
+                        if (preg_match("#^0[1-68]([-. ]?[0-9]{2}){4}$#", field)) {
                             return { error: false, message: '' }
                         } else {
                             return { error: true, message: 'Format de contact incorrect.' }

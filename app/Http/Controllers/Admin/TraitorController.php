@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
+use App\Models\Product;
 use App\Models\Traitor;
 use App\Mail\TraitorDenied;
 use App\Mail\TraitorAllowed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -93,6 +95,15 @@ class TraitorController extends Controller
     public function destroy($id)
     {
         $traitor = Traitor::find($id);
+        $products = Product::where('traitor_id', $id)->get();
+
+        foreach ($products as $product) {
+            $orders = Order::where('product_id', $product->id)->get();
+            foreach ($orders as $order) {
+                $order = $order->delete();
+            }
+            $product = $product->delete();
+        }
 
         try {
             $traitor = $traitor->delete();
@@ -111,7 +122,6 @@ class TraitorController extends Controller
             'name' => 'Propriétaire/Gérant',
             'city' => 'Ville',
             'address' => 'Adresse',
-            // 'status' => 'Statut',
         ];
         return $columns;
     }
@@ -130,11 +140,11 @@ class TraitorController extends Controller
     private function traitor_fields()
     {
         $fields = [
-            'company' => [
+            'denomination' => [
                 'title' => 'Dénomination sociale',
                 'field' => 'time'
             ],
-            'name' => [
+            'nom' => [
                 'title' => 'Nom du propriétaire/gérant',
                 'field' => 'date'
             ],
@@ -146,15 +156,15 @@ class TraitorController extends Controller
                 'title' => 'Contact',
                 'field' => 'time'
             ],
-            'city' => [
+            'ville' => [
                 'title' => 'Ville',
                 'field' => 'textarea'
             ],
-            'address' => [
+            'adresse' => [
                 'title' => 'Adresse',
                 'field' => 'textarea'
             ],
-            'postal' => [
+            'code_postal' => [
                 'title' => 'Code postal',
                 'field' => 'textarea'
             ],

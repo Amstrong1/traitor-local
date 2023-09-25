@@ -14,7 +14,7 @@
             {{ $order->product->name }} <span class="italic"> &nbsp; x {{ $order->quantity }}</span>
         </div>
         <div style="background-color: #bdd5f8"
-            class="flex flex-nowrap rounded-full justify-around w-1/3 py-2 pl-4 outline-0 focus:outline-0 active:outline-0 items-center">
+            class="flex flex-nowrap rounded-full justify-around w-1/2 py-2 pl-4 outline-0 focus:outline-0 active:outline-0 items-center">
             <div> {{ $order->amount }} €</div>
             <div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

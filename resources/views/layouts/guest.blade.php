@@ -20,7 +20,7 @@
     <script src="{{ asset('js/script.js') }}"></script>
 </head>
 
-<body class="font-sans text-gray-900 antialiased">
+<body class="font-sans text-gray-900 antialiased" @if (request()->routeIs('register.*')) onload="geolocal()" @endif>
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
 
         <section class="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
@@ -51,7 +51,8 @@
                                 <!-- Right column container with background and description-->
                                 <div class="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-nonebg-fixed bg-center bg-cover"
                                     style="background-image:url('img/parallax.jpg');">
-                                    <div class="flex flex-col items-center justify-center w-full h-full p-8" style="background-color: rgba(187, 175, 123, .6)">
+                                    <div class="flex flex-col items-center justify-center w-full h-full p-8"
+                                        style="background-color: rgba(187, 175, 123, .6)">
                                         <h4 class="text-white mb-6 text-xl font-semibold">
                                             Traiteur Local
                                         </h4>
@@ -71,6 +72,8 @@
         </section>
     </div>
 
+    @include('sweetalert::alert')
+
     <script async src="//www.google.com/recaptcha/api.js"></script>
     <script>
         function onSubmit(token) {
@@ -79,6 +82,7 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <script src="{{ asset('js/geolocation.js') }}"></script>
 </body>
 
 </html>

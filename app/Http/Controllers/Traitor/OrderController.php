@@ -114,7 +114,7 @@ class OrderController extends Controller
             'delivery_place' => 'Adresse de livraison',
             'formatted_delivery_date' => 'Date de livraison',
             'delivery_hour' => 'Heure de livraison',
-            'statusPaid' => 'Payé',
+            'formatted_paid' => 'Payé',
         ];
         return $columns;
     }

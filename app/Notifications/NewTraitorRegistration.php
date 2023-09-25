@@ -47,7 +47,7 @@ class NewTraitorRegistration extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'data' => 'Nouveau compte traiteur en attente'
+            'data' => ''
         ];
     }
 }

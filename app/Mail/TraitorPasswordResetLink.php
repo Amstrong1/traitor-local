@@ -9,22 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class OrderAllowed extends Mailable
+class TraitorPasswordResetLink extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Elements de message
-     * @var array
-     */
-    public $order;
+    public $data;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($order)
+    public function __construct($data)
     {
-        $this->order = $order;
+        $this->data = $data;
     }
 
     /**
@@ -33,7 +29,7 @@ class OrderAllowed extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Commande validée',
+            subject: 'Lien de réinitialisaton du mot de passe',
         );
     }
 
@@ -43,7 +39,7 @@ class OrderAllowed extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'traitor.mail',
+            view: 'traitor.auth.reset-password-link',
         );
     }
 

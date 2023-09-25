@@ -1,6 +1,6 @@
 <x-user-app>
 
-    <h1 class="mt-8 mb-4 p-4 text-center">Trouver des traiteurs proches de chez vous</h1>
+    <h1 class="mt-16 mb-4 p-4 text-center">Trouver des traiteurs proches de chez vous</h1>
 
     <form class="text-center" action="{{ route('home.products') }}" method="post">
         @csrf
@@ -9,6 +9,10 @@
             <input name='city' style="background-color: #bbaf7b"
                 class="placeholder:text-center placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
                 type="text" placeholder="Entrez votre ville">
+
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+            
             <button type="submit"
                 class="flex items-center whitespace-nowrap px-3 py-2 text-center text-base font-normal leading-[1.6] text-neutral-700 dark:text-neutral-200 dark:placeholder:text-neutral-200">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -28,6 +32,10 @@
     <form class="text-center" action="{{ route('home.products.geo') }}" method="post">
         @csrf
         <div>
+            {{-- lat and long hidden input --}}
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+
             <button type="submit" class="text-center text-sm rounded-full font-bold p-4 py-3 w-3/4"
                 style="background-color: #bbaf7b">
                 Activez la géolocalisation

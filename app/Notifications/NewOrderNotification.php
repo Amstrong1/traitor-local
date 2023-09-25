@@ -35,7 +35,7 @@ class NewOrderNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Nouvelle commande.')
+                    ->line('Vous avez une nouvelle commande en attente.')
                     ->action('Ouvrir l\'application', url('/'));
     }
 
@@ -47,7 +47,7 @@ class NewOrderNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'data' => 'Nouvelle commande'
+            'data' => ''
         ];
     }
 }

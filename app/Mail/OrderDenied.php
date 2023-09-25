@@ -14,11 +14,17 @@ class OrderDenied extends Mailable
     use Queueable, SerializesModels;
 
     /**
+     * Elements de message
+     * @var array
+     */
+    public $order;
+
+    /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -27,7 +33,7 @@ class OrderDenied extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Order Denied',
+            subject: 'Commande non validée',
         );
     }
 
@@ -37,7 +43,7 @@ class OrderDenied extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'traitor.mail',
         );
     }
 

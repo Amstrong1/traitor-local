@@ -18,6 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::where('traitor_id', Auth::guard('traitor')->user()->id)->get();
+
         return view('traitor.products.index', [
             'products' => $products,
             'my_actions' => $this->product_actions(),
@@ -137,9 +138,9 @@ class ProductController extends Controller
             'image' => '',
             'name' => 'Produit',
             'type' => 'Type',
-            'price' => 'Prix',
-            'min_order_qte' => 'Qte Min de Commande',
-            'preparation_delay' => 'Temps de préparation',
+            'price' => 'Prix €',
+            'min_order_qte' => 'Qte Min Commande',
+            'preparation_delay' => 'Préparation (Heure)',
             'description' => 'Desciption',
         ];
         return $columns;
@@ -148,7 +149,6 @@ class ProductController extends Controller
     private function product_actions()
     {
         $actions = (object) array(
-            // 'show' => "Voir",
             'edit' => "Modifier",
             'delete' => "Supprimer",
         );
@@ -175,7 +175,7 @@ class ProductController extends Controller
             ],
             'price' => [
                 'title' => 'Prix',
-                'field' => 'text'
+                'field' => 'number'
             ],
             'min_order_qte' => [
                 'title' => 'Quantité Minimal Commande',

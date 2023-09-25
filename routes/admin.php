@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TraitorController;
+use App\Http\Controllers\Admin\AdminProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::middleware('admin')->group(function () {
         Route::post('/traitors/allow/{id}', [TraitorController::class, 'allow'])->name('traitors.allow');
         Route::post('/traitors/deny/{id}', [TraitorController::class, 'deny'])->name('traitors.deny');
         Route::delete('/traitors/delete/{id}', [TraitorController::class, 'destroy'])->name('traitors.destroy');
+
+        Route::resource('products', AdminProductController::class);
 
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
     });    
