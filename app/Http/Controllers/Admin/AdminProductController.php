@@ -34,7 +34,7 @@ class AdminProductController extends Controller
             Alert::success('Opération effectuée', 'Suppression éffectué');
             return redirect('admin/products');
         } catch (\Exception $e) {
-            Alert::error('Erreur', 'Element introuvable');
+            Alert::error('Erreur', 'Elément introuvable');
             return redirect()->back();
         }
     }
@@ -53,10 +53,11 @@ class AdminProductController extends Controller
             'image' => '',
             'name' => 'Produit',
             'type' => 'Type',
+            'product_city' => 'Ville',
             'price' => 'Prix',
             'min_order_qte' => 'Qte Min de Commande',
             'preparation_delay' => 'Temps de préparation',
-            'description' => 'Desciption',
+            'description' => 'Description',
         ];
         return $columns;
     }

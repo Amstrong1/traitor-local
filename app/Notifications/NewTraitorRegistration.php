@@ -3,9 +3,9 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class NewTraitorRegistration extends Notification
 {
@@ -36,7 +36,7 @@ class NewTraitorRegistration extends Notification
     {
         return (new MailMessage)
             ->line('Nouveau compte traiteur en attente.')
-            ->action('Ouvrir l\'application', url('/admin/dashboard'));
+            ->action('Voir la demande', url('/admin/dashboard'));
     }
 
     /**
@@ -47,7 +47,8 @@ class NewTraitorRegistration extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'data' => ''
+            'data' => 'Nouveau compte traiteur en attente.',
+            'link' => 'admin.traitors.index'
         ];
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class NewOrderNotification extends Notification
 {
@@ -36,7 +36,7 @@ class NewOrderNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Vous avez une nouvelle commande en attente.')
-                    ->action('Ouvrir l\'application', url('/'));
+                    ->action('Voir plus', url('/traitor/dashboard'));
     }
 
     /**
@@ -47,7 +47,8 @@ class NewOrderNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'data' => ''
+            'data' => 'Vous avez une nouvelle commande en attente',
+            'link' => 'traitors.orders.index'
         ];
     }
 }

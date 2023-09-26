@@ -24,7 +24,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
 
         <section class="gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
-            <div class="container h-full p-10">
+            <div class="container h-full md:p-10">
                 <div
                     class="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
                     <div class="w-full">

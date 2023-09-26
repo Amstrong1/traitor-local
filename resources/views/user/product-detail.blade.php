@@ -39,33 +39,33 @@
         <input type="hidden" name="productPrice" value="{{ $product->price }}" id="productPrice">
 
         <div class="flex flex-col p-2">
-            <label class="ml-4 font-bold" for="qty">Quantité</label>
+            <label class="ml-4 font-bold" for="quantity">Quantité</label>
             <input type="number" name="quantity" id="quantity" value="{{ $product->min_order_qte }}"
                 style="background-color: #bdd5f8" min="{{ $product->min_order_qte }}" onchange="totalCalcul()"
                 class="peer block min-h-[auto] w-full rounded-full bg-transparent border-0 px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
-                <x-input-error :messages="$errors->get('qty')" class="mt-2" />
+            <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
         </div>
 
         <div class="flex flex-col p-2">
-            <label class="ml-4 font-bold" for="floatingInput">Date de livraison</label>
+            <label class="ml-4 font-bold" for="">Date de livraison</label>
             <input type="date" name="date" id="" style="background-color: #bdd5f8"
                 class="peer block min-h-[auto] w-full rounded-full border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
-                <x-input-error :messages="$errors->get('date')" class="mt-2" />
+            <x-input-error :messages="$errors->get('date')" class="mt-2" />
         </div>
 
         <div class="flex flex-col p-2">
-            <label class="ml-4 font-bold" for="form5">Heure de livraison</label>
+            <label class="ml-4 font-bold" for="">Heure de livraison</label>
             <input type="time" id="" name="hour" style="background-color: #bdd5f8"
                 class="peer block min-h-[auto] w-full rounded-full border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
-                <x-input-error :messages="$errors->get('hour')" class="mt-2" />
+            <x-input-error :messages="$errors->get('hour')" class="mt-2" />
         </div>
 
         <div class="flex flex-col p-2">
             <label class="ml-4 font-bold" for="">Note au traiteur</label>
             <textarea name="note" style="background-color: #bdd5f8"
                 class="peer block min-h-[auto] w-full rounded-lg border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
-                <x-input-error :messages="$errors->get('note')" class="mt-2" />
             </textarea>
+            <x-input-error :messages="$errors->get('note')" class="mt-2" />
         </div>
 
         <div class="flex flex-row items-center justify-between p-2 mt-4">

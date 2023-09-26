@@ -84,7 +84,7 @@
                                 @endforeach
                             @elseif (Auth::guard('admin')->user() !== null)
                                 @foreach (Auth::guard('admin')->user()->unreadNotifications as $notification)
-                                    <x-dropdown-link>
+                                    <x-dropdown-link href="{{ route($notification->data['link']) }}">
                                         <p class="text-sm">
                                             {{ $notification->data['data'] }}
                                         </p>
@@ -94,7 +94,7 @@
                                 @endforeach
                             @elseif (Auth::guard('traitor')->user() !== null)
                                 @foreach (Auth::guard('traitor')->user()->unreadNotifications as $notification)
-                                    <x-dropdown-link>
+                                    <x-dropdown-link href="{{ route($notification->data['link']) }}">
                                         <p class="text-sm">
                                             {{ $notification->data['data'] }}
                                         </p>

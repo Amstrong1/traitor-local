@@ -10,8 +10,15 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $append = ['product_city'];
+
     public function traitor(): BelongsTo
     {
         return $this->belongsTo(Traitor::class);
+    }   
+
+    public function getProductCityAttribute()
+    {
+        return $this->traitor->city;
     }
 }

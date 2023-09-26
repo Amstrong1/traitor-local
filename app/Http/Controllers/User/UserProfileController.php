@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserProfileController extends Controller
 {
@@ -51,16 +53,17 @@ class UserProfileController extends Controller
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
-
         $user = User::find(Auth::user()->id);
+        dd($user);
 
         Auth::logout();
+        Session::flush();
 
         $user->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
+        Alert::toast('Votre compte a été supprimé', 'error');
         return Redirect::to('/home');
     }
 }

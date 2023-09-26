@@ -101,7 +101,7 @@ class OrderController extends Controller
             Alert::success('Opération effectuée', 'Suppression éffectué');
             return redirect(url()->previous());
         } catch (\Exception $e) {
-            Alert::error('Erreur', 'Element introuvable');
+            Alert::error('Erreur', 'Elément introuvable');
             return redirect()->back();
         }
     }

@@ -3,7 +3,7 @@
         Compte Administrateur
     </h2>
     <h2 class="font-semibold m-8 md:text-center">
-        S'inscrire
+        Créer un compte
     </h2>
     <form method="POST" action="{{ route('register.admin') }}" class="m-4" x-data="validateAdminRegisterForm()"
         x-init="$watch('name', value => { validate('name') })

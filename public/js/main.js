@@ -18,7 +18,7 @@ let deleteConfirmation = function (e) {
     if (typeof swal !== "undefined") {
         swal({
             title: "Suppression",
-            text: "Cet element sera supprimé",
+            text: "Cet élément sera supprimé",
             dangerMode: true,
             icon: "warning",
             buttons: {
@@ -36,7 +36,7 @@ let deleteConfirmation = function (e) {
             }
         });
     } else {
-        value = confirm("Voulez vous supprimer cet element ?");
+        value = confirm("Voulez vous supprimer cet élément ?");
         if (value) {
             e.submit();
         }

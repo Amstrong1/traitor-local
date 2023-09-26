@@ -127,7 +127,7 @@ class ProductController extends Controller
             Alert::success('Opération effectuée', 'Suppression éffectué');
             return redirect('traitor/products');
         } catch (\Exception $e) {
-            Alert::error('Erreur', 'Element introuvable');
+            Alert::error('Erreur', 'Elément introuvable');
             return redirect()->back();
         }
     }
@@ -138,10 +138,11 @@ class ProductController extends Controller
             'image' => '',
             'name' => 'Produit',
             'type' => 'Type',
+            'product_city' => 'Ville',
             'price' => 'Prix €',
             'min_order_qte' => 'Qte Min Commande',
             'preparation_delay' => 'Préparation (Heure)',
-            'description' => 'Desciption',
+            'description' => 'Description',
         ];
         return $columns;
     }

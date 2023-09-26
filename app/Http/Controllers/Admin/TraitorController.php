@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
+use App\Models\Order;
+use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Traitor;
 use App\Mail\TraitorDenied;
 use App\Mail\TraitorAllowed;
 use Illuminate\Http\Request;
+use App\Mail\ContactTraitorMail;
 use App\Http\Controllers\Controller;
-use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,9 +19,11 @@ class TraitorController extends Controller
 {
     public function index()
     {
-        $admin = Admin::find(1);
+        $admins = Admin::all();
 
-        $admin->unreadNotifications->markAsRead();
+        foreach ($admins as $admin) {
+            $admin->unreadNotifications->markAsRead();
+        }
 
         $traitors = Traitor::where('status', 'pending')->get();
 
@@ -30,8 +34,53 @@ class TraitorController extends Controller
         ]);
     }
 
+    public function mailCreate($id)
+    {
+        $traitor = Traitor::find($id);
+
+        return view('admin.traitors.mail-create', [
+            'traitor' => $traitor,
+            'my_fields' => $this->traitor_fields(),
+        ]);
+    }
+
+    public function mailSend(Request $request, $id)
+    {
+        $traitor = Traitor::find($id);
+
+        $request->validate([
+            'object' => 'required|min:2|max:50',
+            'message' => 'required'
+        ]);
+
+        Contact::create([
+            'name' => $traitor->name,
+            'email' => $traitor->email,
+            'object' => $request->object,
+            'message' => $request->message,
+            'type' => 'sent',
+        ]);
+
+        $mail = [
+            'name' => $traitor->name,
+            'email' => $traitor->email,
+            'object' => $request->object,
+            'message' => $request->message
+        ];
+
+        Mail::to($traitor->email)->send(new ContactTraitorMail($mail));
+        Alert::toast('Message envoyé', 'success');
+        return back();    
+    }
+
     public function allowed()
     {
+        $admins = Admin::all();
+
+        foreach ($admins as $admin) {
+            $admin->unreadNotifications->markAsRead();
+        }
+
         $traitors = Traitor::where('status', 'allowed')->get();
 
         return view('admin.traitors.index', [
@@ -43,6 +92,12 @@ class TraitorController extends Controller
 
     public function denied()
     {
+        $admins = Admin::all();
+
+        foreach ($admins as $admin) {
+            $admin->unreadNotifications->markAsRead();
+        }
+
         $traitors = Traitor::where('status', 'denied')->get();
 
         return view('admin.traitors.index', [
@@ -110,7 +165,7 @@ class TraitorController extends Controller
             Alert::success('Opération effectuée', 'Suppression éffectué');
             return redirect(url()->previous());
         } catch (\Exception $e) {
-            Alert::error('Erreur', 'Element introuvable');
+            Alert::error('Erreur', 'Elément introuvable');
             return redirect()->back();
         }
     }
@@ -129,6 +184,7 @@ class TraitorController extends Controller
     private function traitor_actions()
     {
         $actions = (object) array(
+            'mail' => 'Mail',
             'show' => 'Voir',
             'edit' => 'Modifier',
             'delete' => 'Supprimer',
@@ -140,32 +196,32 @@ class TraitorController extends Controller
     private function traitor_fields()
     {
         $fields = [
-            'denomination' => [
+            'company' => [
                 'title' => 'Dénomination sociale',
-                'field' => 'time'
+                'field' => 'text'
             ],
-            'nom' => [
+            'name' => [
                 'title' => 'Nom du propriétaire/gérant',
-                'field' => 'date'
+                'field' => 'text'
             ],
             'email' => [
                 'title' => 'Email',
-                'field' => 'date'
+                'field' => 'email'
             ],
             'contact' => [
                 'title' => 'Contact',
-                'field' => 'time'
+                'field' => 'tel'
             ],
-            'ville' => [
+            'city' => [
                 'title' => 'Ville',
-                'field' => 'textarea'
+                'field' => 'text'
             ],
-            'adresse' => [
-                'title' => 'Adresse',
-                'field' => 'textarea'
-            ],
-            'code_postal' => [
+            'postal' => [
                 'title' => 'Code postal',
+                'field' => 'text'
+            ],
+            'address' => [
+                'title' => 'Adresse',
                 'field' => 'textarea'
             ],
         ];

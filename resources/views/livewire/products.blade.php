@@ -151,7 +151,8 @@
         @endforeach
     @else
         <div class="flex flex-col items-center justify-center text-center m-4">
-            Aucune données ne correspond à votre recherche
+            <p class="m-1">Aucune données ne correspond à votre recherche</p>
+            <p class="m-1">Si vous tentez d'utiliser la géolocalisation vérifier que votre localisation est activée et partagée</p>
             <img src="{{ asset('img/nodata.svg') }}" alt="no_data" srcset="">
         </div>
     @endif

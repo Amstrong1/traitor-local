@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------

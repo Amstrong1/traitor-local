@@ -342,6 +342,7 @@ window.validateContactForm = function () {
     return {
         name: '',
         email: '',
+        object: '',
         message: '',
         validation: {
             name: {
@@ -406,6 +407,33 @@ window.validateContactForm = function () {
                             return { error: false, message: '' }
                         } else {
                             return { error: true, message: `Ce champ doit contenir ${value} caractères minimun.` }
+                        }
+                    }
+                },
+                error: true,
+                message: ''
+            },
+            object: {
+                rule: {
+                    required: function (field) {
+                        if (field) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: 'Ce champ est requis.' }
+                        }
+                    },
+                    minLength: function (field, value = 2) {
+                        if (field && field.length >= value) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: `Ce champ doit contenir ${value} caractères minimun.` }
+                        }
+                    },
+                    maxLength: function (field, value = 50) {
+                        if (field && field.length <= value) {
+                            return { error: false, message: '' }
+                        } else {
+                            return { error: true, message: `Ce champ doit contenir ${value} caractères maximum.` }
                         }
                     }
                 },

@@ -34,7 +34,7 @@
                     </form> --}}
 
                     <div class="mt-4">
-                        <x-table :resources="$users" :mattributes="$my_attributes" type="admin.user" />
+                        <x-table :resources="$users" :mactions="$my_actions" :mattributes="$my_attributes" type="admin.user" />
                     </div>
                 </div>
             </div>

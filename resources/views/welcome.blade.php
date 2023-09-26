@@ -363,7 +363,7 @@
 
                         <!-- Toggler -->
                         <button
-                            class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white lg:hidden"
+                            class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white md:hidden"
                             data-te-sidenav-toggle-ref data-te-target="#sidenav-7" aria-controls="#sidenav-7"
                             aria-haspopup="true">
                             <span class="block [&>svg]:h-5 [&>svg]:w-6 [&>svg]:text-white">
@@ -387,7 +387,7 @@
         <div class="px-8 md:px-14 mx-auto flex flex-wrap flex-col md:flex-row items-center h-full py-2"
             style="background-color: rgba(187, 175, 123, .6)">
             <!--Left Col-->
-            <div class="flex flex-col w-full xl:w-2/5 justify-center items-center lg:items-start">
+            <div class="pt-24 flex flex-col lg:w-1/2 justify-center items-center lg:items-start">
                 <h1
                     class="my-4 text-3xl md:text-4xl text-white font-bold leading-tight text-center md:text-left slide-in-bottom-h1">
                     Trouver des traiteurs proches de chez vous</h1>
@@ -410,7 +410,7 @@
             </div>
 
             <!--Right Col-->
-            <div class="hidden md:block w-full xl:w-3/5 overflow-y-hidden py-6">
+            <div class="hidden lg:block lg:w-1/2 overflow-y-hidden py-6">
                 {{-- <img class="w-5/6 mx-auto lg:mr-0 slide-in-bottom" src="{{ asset('img/banner.png') }}"> --}}
                 <div id="carouselDarkVariant" class="relative" data-te-carousel-init data-te-ride="carousel">
 
@@ -920,6 +920,19 @@
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                     <span class="text-sm italic text-red-500 mt-2">
                                         <div x-text="validation.email.message"></div>
+                                    </span>
+                                </div>
+
+                                <!--object input-->
+                                <div class="relative mb-6">
+                                    <label for="object" class="">Objet
+                                    </label>
+                                    <input x-model="object" type="text" name="object"
+                                        class="peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                                        id="object" placeholder="Email" />
+                                    <x-input-error :messages="$errors->get('object')" class="mt-2" />
+                                    <span class="text-sm italic text-red-500 mt-2">
+                                        <div x-text="validation.object.message"></div>
                                     </span>
                                 </div>
 

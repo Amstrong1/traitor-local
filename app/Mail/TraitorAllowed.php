@@ -43,7 +43,7 @@ class TraitorAllowed extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'admin.mail',
+            view: 'admin.traitors.validation-mail',
         );
     }
 

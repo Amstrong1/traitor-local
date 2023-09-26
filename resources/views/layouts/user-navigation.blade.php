@@ -99,7 +99,7 @@
     data-te-sidenav-init data-te-sidenav-hidden="false">
     <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
         <li class="relative m-4 text-center">
-            <a href="{{ url('/home') }}">Site Internet</a>
+            <a href="{{ url('/home') }}">Accueil</a>
         </li>
         @auth
             <li class="relative mx-4 my-6 text-center">

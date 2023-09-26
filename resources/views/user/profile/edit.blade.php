@@ -1,7 +1,7 @@
 <x-user-app>
 
-    <h1 class="m-4 font-bold">Mon profil</h1>
-
+    <h1 class="mt-16 mb-4 mx-4 font-bold">Mon profil</h1>
+{{-- 
     @php
         if (Auth::user() !== null) {
             $order = Auth::user()->orders->count();
@@ -10,7 +10,6 @@
         }
     @endphp
 
-    <!-- Hero section with background image, heading, subheading and button -->
     <div class="m-4 p-4 shadow-lg grid grid-cols-5 gap-4">
         @for ($i = 0; $i < 9; $i++)
             <div class="w-12 h-12 rounded-full bg-black p-2 text-center text-xl">
@@ -29,7 +28,7 @@
                     d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
             </svg>
         </div>
-    </div>
+    </div> --}}
 
     <div class="flex flex-col m-4">
         <x-input-label for="name" :value="__('Nom')" />
@@ -88,11 +87,11 @@
                 @method('delete')
 
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    {{ __('Are you sure you want to delete your account?') }}
+                    {{ __('Êtes-vous sûr de vouloir supprimer votre compte?') }}
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                    {{ __('Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Veuillez entrer votre mot de passe pour confirmer que vous souhaitez supprimer définitivement votre compte.') }}
                 </p>
 
                 <div class="mt-6">
@@ -106,11 +105,11 @@
 
                 <div class="mt-6 flex justify-end">
                     <x-secondary-button x-on:click="$dispatch('close')">
-                        {{ __('Cancel') }}
+                        {{ __('Annuler') }}
                     </x-secondary-button>
 
                     <x-danger-button class="ml-3">
-                        {{ __('Delete Account') }}
+                        {{ __('Supprimer') }}
                     </x-danger-button>
                 </div>
             </form>

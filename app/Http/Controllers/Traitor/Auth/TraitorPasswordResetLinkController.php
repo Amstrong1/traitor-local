@@ -41,6 +41,9 @@ class TraitorPasswordResetLinkController extends Controller
             Mail::to($traitor->email)->send(new TraitorPasswordResetLink($traitor));
             Alert::toast('Votre requête a été soumise', 'success');
             return back();
+        } else {
+            Alert::toast('Vérifiez l\'adresse mail', 'error');
+            return back();
         }
     }
 }

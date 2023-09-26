@@ -9,22 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class TraitorDenied extends Mailable
+class ContactTraitorMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Elements de message
-     * @var array
-     */
-    public $traitor;
-
+    public $data;
+    
     /**
      * Create a new message instance.
      */
-    public function __construct($traitor)
+    public function __construct($data)
     {
-        $this->traitor = $traitor;
+        $this->data = $data;
     }
 
     /**
@@ -33,7 +29,7 @@ class TraitorDenied extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Réponse suite à votre demande',
+            subject: $this->data['object'],
         );
     }
 
@@ -43,7 +39,7 @@ class TraitorDenied extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'admin.traitors.validation-mail',
+            view: 'admin.traitors.mail',
         );
     }
 

@@ -10,7 +10,7 @@
                         </th>
                     @endforeach
                     @isset($mactions)
-                        <th class="px-4 py-3 text-center">Actions</th>
+                        <th class="px-4 py-3 text-center">Action(s)</th>
                     @endisset
                 </tr>
             </thead>
@@ -92,6 +92,17 @@
                                                         <path
                                                             d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
                                                         </path>
+                                                    </svg>
+                                                </a>
+                                            @elseif ($action == 'mail')
+                                                <a href="{{ route(Str::plural($type) . '.mail.create', [$resource->id]) }}"
+                                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-main rounded-lg dark:text-main focus:outline-none focus:shadow-outline-gray"
+                                                    aria-label="Mail">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="w-5 h-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                                     </svg>
                                                 </a>
                                             @elseif ($action == 'delete')
