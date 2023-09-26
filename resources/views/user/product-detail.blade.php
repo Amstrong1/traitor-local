@@ -63,8 +63,7 @@
         <div class="flex flex-col p-2">
             <label class="ml-4 font-bold" for="">Note au traiteur</label>
             <textarea name="note" style="background-color: #bdd5f8"
-                class="peer block min-h-[auto] w-full rounded-lg border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0">
-            </textarea>
+                class="peer block min-h-[auto] w-full rounded-lg border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"></textarea>
             <x-input-error :messages="$errors->get('note')" class="mt-2" />
         </div>
 
@@ -73,7 +72,7 @@
                 style="background-color: #bab9b4">
                 <input type="text" class="border-0 w-24 h-8 rounded-full" name='total' id="total"
                     style="background-color: #bab9b4"
-                    value="{{ number_format($product->price * $product->min_order_qte, 2, '.', ' ') }}" readonly>€
+                    value="{{ number_format($product->price * $product->min_order_qte, 2, '.', ' ') }}" readonly> €
             </div>
 
             <button type="submit">

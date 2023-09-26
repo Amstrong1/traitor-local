@@ -51,7 +51,7 @@
             </span>
         </div>
 
-        <!-- contact Address -->
+        <!-- contact -->
         <div class="mt-4">
             <x-input-label for="contact" :value="__('Contact')" />
             <x-text-input x-model="contact" id="contact" class="block mt-1 w-full" type="tel" name="contact"
@@ -62,7 +62,26 @@
             </span>
         </div>
 
-        <!-- contact Address -->
+        <!-- Address -->
+        <div class="mt-4">
+            <x-input-label for="address" :value="__('Adresse')" />
+            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')"
+                required autocomplete="username" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
+
+        <!-- postal code -->
+        <div class="mt-4">
+            <x-input-label for="postal" :value="__('Code Postal')" />
+            <x-text-input x-model="postal" id="postal" class="block mt-1 w-full" type="text" name="postal"
+                max="5" :value="old('postal')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('postal')" class="mt-2" />
+            <span class="text-sm italic text-red-500 mt-2">
+                <div x-text="validation.postal.message"></div>
+            </span>
+        </div>
+
+        <!-- Ville -->
         <div class="mt-4">
             <x-input-label for="city" :value="__('Ville')" />
             <x-text-input x-model="city" id="city" class="block mt-1 w-full" type="text" name="city"
@@ -79,25 +98,6 @@
             <x-text-input id="square" class="block mt-1 w-full" type="text" name="square" :value="old('square')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('square')" class="mt-2" />
         </div> --}}
-
-        <!-- postal code -->
-        <div class="mt-4">
-            <x-input-label for="postal" :value="__('Code Postal')" />
-            <x-text-input x-model="postal" id="postal" class="block mt-1 w-full" type="text" name="postal"
-                max="5" :value="old('postal')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('postal')" class="mt-2" />
-            <span class="text-sm italic text-red-500 mt-2">
-                <div x-text="validation.postal.message"></div>
-            </span>
-        </div>
-
-        <!-- contact Address -->
-        <div class="mt-4">
-            <x-input-label for="address" :value="__('Adresse')" />
-            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')"
-                required autocomplete="username" />
-            <x-input-error :messages="$errors->get('address')" class="mt-2" />
-        </div>
 
         <!-- Google Recaptcha -->
         <div class="g-recaptcha mt-4" data-sitekey={{ config('services.recaptcha.key') }}></div>

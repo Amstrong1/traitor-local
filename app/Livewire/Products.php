@@ -39,9 +39,12 @@ class Products extends Component
             }
             $products = $products->collapse();
         } else {
-
             $latitude = request()->latitude; // Replace with the actual latitude value
             $longitude = request()->longitude; // Replace with the actual longitude value
+            // dd(
+            //     $latitude,
+            //     $longitude
+            // );
 
             $traitors = DB::table('traitors')
                 ->select(

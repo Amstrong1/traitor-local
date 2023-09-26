@@ -19,7 +19,14 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <!-- Email Address -->
+        <!-- Address -->
+        <div class="mt-4 ">
+            <x-input-label for="address" :value="__('Adresse')" />
+            <x-text-input id="address" type="text" name="address" :value="old('address')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
+        </div>
+
+        <!-- city -->
         <div class="mt-4 ">
             <x-input-label for="city" :value="__('Ville')" />
             <x-text-input id="city" type="text" name="city" :value="old('city')" required autocomplete="username" />
@@ -32,13 +39,6 @@
             <x-text-input id="square" type="text" name="square" :value="old('square')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('square')" class="mt-2" />
         </div> --}}
-
-        <!-- Email Address -->
-        <div class="mt-4 ">
-            <x-input-label for="address" :value="__('Adresse')" />
-            <x-text-input id="address" type="text" name="address" :value="old('address')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('address')" class="mt-2" />
-        </div>
 
         <!-- Password -->
         <div class="mt-4 ">

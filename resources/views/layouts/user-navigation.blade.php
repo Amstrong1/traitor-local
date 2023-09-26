@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-24">
-            {{-- hamburger icon --}}
+            {{-- return icon --}}
             <div class="flex items-center pt-4 -pb-4">
                 @if (request()->routeIs('home.show.product'))
                     <button
@@ -10,7 +10,6 @@
                         @if (session('city') !== null)
                             <form action="{{ route('home.products') }}" method="post">
                                 @csrf
-                                <!-- Hamburger icon -->
                                 <input type="hidden" name="city" value="{{ session('city') }}">
                                 <a href="{{ route('home.products') }}"
                                     onclick="event.preventDefault(); this.closest('form').submit();">

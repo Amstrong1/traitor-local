@@ -42,8 +42,8 @@ class UserController extends Controller
     {
         $product = Product::find($id);
 
-         // generation de id facture pk
-         if (!$request->session()->has('product_count')) {
+        // generation de id facture pk
+        if (!$request->session()->has('product_count')) {
             $request->session()->put('product_count', 0);
         }
 
@@ -158,5 +158,26 @@ class UserController extends Controller
         $order = Order::find($id);
 
         return view('user.order-product', compact('order'));
+    }
+
+    public function rate(Request $request, $id)
+    {
+        $product = Product::find($id);
+
+        $validated = $request->validate([
+            'rate' => 'required|string',
+        ]);
+        if ($validated) {
+            if ($request->rate !== 0) {
+                $product->rate = ceil(($product->rate + $request->rate) / 2);
+            } else {
+                $product->rate = $request->rate;
+            }
+            
+            $product->save();
+
+            Alert::toast('Merci de votre attention', 'success');
+        }
+        return redirect('/home');
     }
 }

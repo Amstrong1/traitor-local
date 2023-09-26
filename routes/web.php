@@ -35,6 +35,7 @@ Route::match(['get', 'post'], '/home', [UserController::class, 'index'])->name('
 Route::match(['get', 'post'], '/home/products', [UserController::class, 'indexProducts'])->name('home.products');
 Route::match(['get', 'post'], '/home/products/geo', [UserController::class, 'indexProductsGeo'])->name('home.products.geo');
 Route::match(['get', 'post'], '/home/product/show/{id}', [UserController::class, 'showProduct'])->name('home.show.product');
+Route::match(['get', 'post'], '/home/product/rate/{id}', [UserController::class, 'rate'])->name('home.product.rate');
 Route::match(['get', 'post'], '/home/profil', [UserController::class, 'profil'])->name('user.profil');
 Route::match(['get', 'post'], '/home/cart', [UserController::class, 'cart'])->name('user.cart');
 Route::match(['get', 'post'], '/home/order', [UserController::class, 'order'])->name('user.order');
