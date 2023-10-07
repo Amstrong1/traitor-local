@@ -13,6 +13,12 @@ function geolocal() {
                 // console.log(`Latitude: ${lat}, longitude: ${lng}`);
                 document.getElementById('latitude').value = lat;
                 document.getElementById('longitude').value = lng;
+
+                if (document.getElementById('latitude1')) {
+                    document.getElementById('latitude1').value = lat;
+                    document.getElementById('longitude1').value = lng;
+                }
+
             },
             // Error callback function
             (error) => {

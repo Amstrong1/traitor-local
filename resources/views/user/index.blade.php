@@ -33,8 +33,8 @@
         @csrf
         <div>
             {{-- lat and long hidden input --}}
-            <input type="hidden" name="latitude" id="latitude">
-            <input type="hidden" name="longitude" id="longitude">
+            <input type="hidden" name="latitude" id="latitude1">
+            <input type="hidden" name="longitude" id="longitude1">
 
             <button type="submit" class="text-center text-sm rounded-full font-bold p-4 py-3 w-3/4"
                 style="background-color: #bbaf7b">

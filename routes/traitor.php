@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Traitor\HomeController;
+use App\Http\Controllers\Traitor\FlyerController;
 use App\Http\Controllers\Traitor\OrderController;
 use App\Http\Controllers\Traitor\ProductController;
 
@@ -29,6 +30,8 @@ Route::middleware('traitor')->group(function () {
         Route::post('/orders/deny/{id}', [OrderController::class, 'deny'])->name('orders.deny');
 
         Route::resource('/orders', OrderController::class);
+
+        Route::resource('/flyers', FlyerController::class);
 
         Route::resource('/products', ProductController::class);
     });

@@ -11,16 +11,15 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
-
-    @livewireStyles()
-
-    <!-- Scripts -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    
+    @livewireStyles()
+    
+    <!-- Scripts -->
+    <script src="{{ asset('js/geolocation.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 
@@ -36,11 +35,6 @@
     @include('sweetalert::alert')
 
     @livewireScripts()
-
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-    <script src="{{ asset('js/geolocation.js') }}"></script>
 
 </body>
 

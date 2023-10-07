@@ -24,11 +24,20 @@
                                         <a class="flex items-center justify-center text-sm hover:opacity-80">
                                             <!-- Avatar OR Image with inset shadow -->
                                             <div class="relative hidden h-12 w-12 mr-3 md:block">
-                                                <img class="object-cover w-full h-full rounded-lg"
-                                                    src="{{ $resource->{$column} !== null
-                                                        ? url('storage/' . $resource->{$column})
-                                                        : 'https://ui-avatars.com/api/?background=random&name=' . $resource->fullname }}"
-                                                    alt="" loading="lazy">
+
+                                                <div data-te-lightbox-init
+                                                    class="flex flex-col space-y-5 lg:flex-row lg:space-x-5 lg:space-y-0">
+                                                    <div class="h-full w-full">
+                                                        <img src="{{ $resource->{$column} !== null
+                                                            ? url('storage/' . $resource->{$column})
+                                                            : 'https://ui-avatars.com/api/?background=random&name=' . $resource->name }}"
+                                                            data-te-img="{{ $resource->{$column} !== null
+                                                                ? url('storage/' . $resource->{$column})
+                                                                : 'https://ui-avatars.com/api/?background=random&name=' . $resource->name }}"
+                                                            alt="{{ $resource->name }}" loading="lazy"
+                                                            class="object-cover w-auto h-14 rounded-lg cursor-zoom-in data-[te-lightbox-disabled]:cursor-auto" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </a>
                                     @elseif ($column == 'status')

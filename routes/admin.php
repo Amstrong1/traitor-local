@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TraitorController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\FlyersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::middleware('admin')->group(function () {
         Route::post('/traitors/mail/{id}', [TraitorController::class, 'mailSend'])->name('traitors.mail.send');
 
         Route::resource('products', AdminProductController::class);
+        Route::resource('flyers', FlyersController::class);
         
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
         Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');

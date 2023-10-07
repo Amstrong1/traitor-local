@@ -35,16 +35,12 @@ class Products extends Component
 
             $products = new EloquentCollection();
             foreach ($traitors as $traitor) {
-                $products[] = $traitor->products()->get();
+                $products[] = $traitor->products()->orderBy('price', 'desc')->get();
             }
             $products = $products->collapse();
         } else {
             $latitude = request()->latitude; // Replace with the actual latitude value
             $longitude = request()->longitude; // Replace with the actual longitude value
-            // dd(
-            //     $latitude,
-            //     $longitude
-            // );
 
             $traitors = DB::table('traitors')
                 ->select(
@@ -60,8 +56,8 @@ class Products extends Component
 
             $products = new EloquentCollection();
             for ($i = 0; $i < count($traitors); $i++) {
-                if ($traitors[$i]->distance > -1 && $traitors[$i]->distance < 20) {
-                    $products[] = Product::where('traitor_id', $traitors[0]->id)->get();
+                if ($traitors[$i]->distance < 20) {
+                    $products[] = Product::where('traitor_id', $traitors[$i]->id)->orderBy('price', 'desc')->get();
                 }
             }
             $products = $products->collapse();
