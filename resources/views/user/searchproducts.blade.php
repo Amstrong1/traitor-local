@@ -1,23 +1,47 @@
-<div>
-    {{-- Care about people's approval and you will be their prisoner. --}}
+<x-user-app>
 
-    <div class="text-center mt-2 py-1 mx-auto rounded-full w-4/5"
-        style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
-        <select id="type_id" name="type" wire:model="type_id" wire:change="updateType($event.target.value)"
-            class="placeholder:text-center placeholder:text-sm rounded-full w-3/4 bg-transparent border-0"
-            style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
-            @foreach ($types as $type_id => $type)
-                <option value="{{ $type_id }}">{{ $type }}</option>
-            @endforeach
+    <form class="text-center mt-16" action="{{ route('home.searchproducts') }}" method="post">
+        @csrf
+        <input name='city'
+                class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
+                type="text" style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+                placeholder="Choix de la ville" value="{{ request()->city }}">
+
+        <select name="type" id="" class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
+        style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+        >
+            
+            <option value="Tout">Tout</option>
+            <option value="Entrée">Entrée</option>
+            <option value="Plat">Plat</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Boisson">Boisson</option>
+            
         </select>
-    </div>
+        <input name='name'
+                class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
+                type="text" style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+                placeholder="Nom" value="{{ request()->name }}">
+        <input name='min_order_qte'
+                class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
+                type="text" style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+                placeholder="réaliser a partir de ... repas" value="{{ request()->min_order_qte }}">
 
-    <div class="flex justify-center w-full">
-        <div wire:loading>
-            Recherche en cours...
-        </div>
-    </div>
-    @if ($products->count() !== 0)
+                <input type="range" id="myRange" name="price" class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 
+                focus:outline-0 active:outline-0 rounded-full" value="{{ request()->price }}"
+                style="color: #bbaf7b; -webkit-box-shadow: none; box-shadow: none;" name="" min="{{ $minPrice }}" max="{{ $maxPrice }}">
+                <p id="rangeValue">{{ request()->price }}€</p>
+                <button type="submit" style="padding:10px 95px; background-color: #bbaf7b; -webkit-box-shadow: none; box-shadow: none;" class="inline-flex items-center rounded bg-warning px-4 mt-5 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#e4a11b] transition duration-150 ease-in-out hover:bg-warning-600 hover:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] focus:bg-warning-600 focus:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] focus:outline-none focus:ring-0 active:bg-warning-700 active:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.3),0_4px_18px_0_rgba(228,161,27,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(228,161,27,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(228,161,27,0.2),0_4px_18px_0_rgba(228,161,27,0.1)]">
+                    <span>Rechercher</span>
+                    <span class="ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </span>
+                </button>
+    </form>
+    <div>
+        @if ($products->count() !== 0)
         @php
             $i = 0;
         @endphp
@@ -121,7 +145,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width=".5"
                                         class="w-6 h-6"
                                         @php
-if ($product->rate > 0) {
+                                if ($product->rate > 0) {
                                                 if ($i <= intval($product->rate)) {
                                                     echo 'fill="orange" stroke="none"';
                                                 } else {
@@ -290,4 +314,19 @@ if ($product->rate > 0) {
             <img src="{{ asset('img/nodata.svg') }}" alt="no_data" srcset="">
         </div>
     @endif
-</div>
+
+    </div>
+
+    {{-- @livewire('products') --}}
+
+</x-user-app>
+<script>
+    var rangeInput = document.getElementById("myRange");
+    var rangeValueDisplay = document.getElementById("rangeValue");
+
+    // Écoutez les changements de valeur de l'élément input de type "range"
+    rangeInput.addEventListener("input", function() {
+        rangeValueDisplay.textContent =  rangeInput.value + "€";
+    });
+</script>
+

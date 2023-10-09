@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('preparation_delay');
             $table->string('image');
             $table->text('description');
-            $table->int('rate')->default(0);
+            $table->integer('rate')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

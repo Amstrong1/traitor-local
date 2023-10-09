@@ -18,6 +18,8 @@ class Products extends Component
         'Boisson' => 'Boisson',
     ];
 
+    
+    
     public $type_id;
 
     public $products;

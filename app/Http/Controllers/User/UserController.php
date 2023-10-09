@@ -32,6 +32,42 @@ class UserController extends Controller
             return view('user.products');
         }
     }
+    public function searchProducts(Request $request)
+    {
+        $minPrice = Product::min('price');
+        $maxPrice = Product::max('price');        
+        $city = $request->city;
+        if($request->type == 'Tout'){
+            $products = Product::where('name', 'LIKE', '%' . $request->name . '%')
+                                ->where('price', 'LIKE', '%' . $request->price . '%')
+                                ->where('min_order_qte', 'LIKE', '%' . $request->min_order_qte . '%')
+                                ->whereHas('traitor', function ($query) use ($city) {
+                                    $query->where('city', 'LIKE', '%' . $city . '%');
+                                    })
+                                // ->orWhere('city', 'LIKE', '%' . $request->city . '%')                       
+                                ->get();
+        }else{
+
+            $products = Product::where('name', 'LIKE', '%' . $request->name . '%')
+                                ->where('type', 'LIKE', '%' . $request->type . '%')
+                                ->where('price', 'LIKE', '%' . $request->price . '%')
+                                ->where('min_order_qte', 'LIKE', '%' . $request->min_order_qte . '%')
+                                ->whereHas('traitor', function ($query) use ($city) {
+                                    $query->where('city', 'LIKE', '%' . $city . '%');
+                                    })
+                                // ->orWhere('city', 'LIKE', '%' . $request->city . '%')                       
+                                ->get();
+        }
+
+        //dd($products);
+        return view('user.searchproducts', compact('products', 'minPrice', 'maxPrice'));
+    }
+
+    // public function getSearchProducts(Request $request)
+    // {
+       
+
+    // }
 
     public function indexProductsGeo()
     {
