@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Order;
+use App\Models\Nature;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,14 +36,19 @@ class UserController extends Controller
     public function searchProducts(Request $request)
     {
         $minPrice = Product::min('price');
-        $maxPrice = Product::max('price');        
+        $maxPrice = Product::max('price'); 
+        $natures = Nature::all();       
         $city = $request->city;
+        $name_nature = $request->name_nature;
         if($request->type == 'Tout'){
             $products = Product::where('name', 'LIKE', '%' . $request->name . '%')
                                 ->where('price', 'LIKE', '%' . $request->price . '%')
                                 ->where('min_order_qte', 'LIKE', '%' . $request->min_order_qte . '%')
                                 ->whereHas('traitor', function ($query) use ($city) {
                                     $query->where('city', 'LIKE', '%' . $city . '%');
+                                    })
+                                ->whereHas('nature', function ($query) use ($name_nature) {
+                                    $query->where('name', 'LIKE', '%' . $name_nature . '%');
                                     })
                                 // ->orWhere('city', 'LIKE', '%' . $request->city . '%')                       
                                 ->get();
@@ -55,12 +61,15 @@ class UserController extends Controller
                                 ->whereHas('traitor', function ($query) use ($city) {
                                     $query->where('city', 'LIKE', '%' . $city . '%');
                                     })
+                                ->whereHas('nature', function ($query) use ($name_nature) {
+                                    $query->where('name', 'LIKE', '%' . $name_nature . '%');
+                                    })
                                 // ->orWhere('city', 'LIKE', '%' . $request->city . '%')                       
                                 ->get();
         }
 
         //dd($products);
-        return view('user.searchproducts', compact('products', 'minPrice', 'maxPrice'));
+        return view('user.searchproducts', compact('products', 'minPrice', 'maxPrice', 'natures'));
     }
 
     // public function getSearchProducts(Request $request)

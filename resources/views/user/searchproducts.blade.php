@@ -24,6 +24,18 @@
                 
             </select>
         </p>
+        <p>
+
+            <select name="name_nature" id="" class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
+            style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+            >
+                @foreach ($natures as $nature) 
+                    
+                <option value="{{ $nature->name }}">{{ $nature->name }}</option>
+                @endforeach
+                
+            </select>
+        </p>
 
 
         <p>
@@ -43,7 +55,7 @@
         <p>
             <input type="range" id="myRange" name="price" class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 
             focus:outline-0 active:outline-0 rounded-full" value="{{ request()->price }}"
-            style="color: #bbaf7b; -webkit-box-shadow: none; box-shadow: none;" name="" min="{{ $minPrice }}" max="{{ $maxPrice }}">
+            style="accent-color: #bbaf7b; -webkit-box-shadow: none; box-shadow: none;" name="" min="{{ $minPrice }}" max="{{ $maxPrice }}">
         </p>
                 <p id="rangeValue">{{ request()->price }}€</p>
                 <p>

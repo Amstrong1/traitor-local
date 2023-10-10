@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NatureController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\FlyersController;
 use App\Http\Controllers\Admin\TraitorController;
 use App\Http\Controllers\Admin\AdminProductController;
-use App\Http\Controllers\Admin\FlyersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,13 @@ Route::middleware('admin')->group(function () {
 
         Route::get('/mailbox/show/{id}', [HomeController::class, 'show'])->name('mails.show');
         Route::delete('/mailbox/show/{id}', [HomeController::class, 'destroy'])->name('mails.destroy');
+        //nature
+        Route::get('/natures', [NatureController::class, 'natures'])->name('natures');
+        Route::get('/natures/create', [NatureController::class, 'create'])->name('natures.create');
+        Route::post('/natures', [NatureController::class, 'store'])->name('natures.store');
+        Route::get('/natures/{id}/edit', [NatureController::class, 'edit'])->name('natures.edit');
+        Route::put('/natures/{id}', [NatureController::class, 'update'])->name('natures.update');
+        Route::delete('/natures/{id}', [NatureController::class, 'destroy'])->name('natures.destroy');
     });    
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Traitor;
 
 use App\Models\Product;
+use App\Models\Nature;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -49,6 +50,7 @@ class ProductController extends Controller
 
         $product->traitor_id = Auth::guard('traitor')->user()->id;
         $product->type = $request->type;
+        $product->nature_id = $request->nature;
         $product->name = $request->name;
         $product->price = $request->price;
         $product->min_order_qte = $request->min_order_qte;
@@ -97,6 +99,7 @@ class ProductController extends Controller
         }
 
         $product->type = $request->type;
+        $product->nature_id = $request->nature;
         $product->name = $request->name;
         $product->price = abs($request->price);
         $product->min_order_qte = abs($request->min_order_qte);
@@ -137,6 +140,7 @@ class ProductController extends Controller
             'image' => '',
             'name' => 'Produit',
             'type' => 'Type',
+            'formatted_nature' => 'Nature',
             'product_city' => 'Ville',
             'price' => 'Prix €',
             'min_order_qte' => 'Qte Min Commande',
@@ -172,6 +176,11 @@ class ProductController extends Controller
                 'title' => 'Type',
                 'field' => 'select',
                 'options' => $type,
+            ],
+            'nature' => [
+                'title' => 'Nature',
+                'field' => 'model',
+                'options' => Nature::all(),
             ],
             'price' => [
                 'title' => 'Prix',
