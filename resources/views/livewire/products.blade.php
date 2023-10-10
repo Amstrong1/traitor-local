@@ -1,7 +1,7 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
 
-    <div class="text-center mt-2 py-1 mx-auto rounded-full w-4/5"
+    <div class="text-center mt-2 py-0 mx-auto rounded-full w-4/5"
         style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
         <select id="type_id" name="type" wire:model="type_id" wire:change="updateType($event.target.value)"
             class="placeholder:text-center placeholder:text-sm rounded-full w-3/4 bg-transparent border-0"
