@@ -13,7 +13,7 @@
         <p>
 
             <select name="type" id="" class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
-            style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+            style="background-color: #f8f7f5;  -webkit-box-shadow: none; box-shadow: none;"
             >
                 
                 <option value="Tout">Tout</option>
@@ -27,7 +27,7 @@
         <p>
 
             <select name="name_nature" id="" class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
-            style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+            style="background-color: #f8f7f5;  -webkit-box-shadow: none; box-shadow: none;"
             >
                 @foreach ($natures as $nature) 
                     
@@ -42,14 +42,14 @@
             
             <input name='name'
                     class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
-                    type="text" style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+                    type="text" style="background-color: #f8f7f5;  -webkit-box-shadow: none; box-shadow: none;"
                     placeholder="Nom" value="{{ request()->name }}">
         </p>
         <p>
 
             <input name='min_order_qte'
                     class="placeholder:text-center w-3/5 mt-4 placeholder:text-sm border-0 outline-0 focus:outline-0 active:outline-0 rounded-full"
-                    type="text" style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;"
+                    type="text" style="background-color: #f8f7f5;  -webkit-box-shadow: none; box-shadow: none;"
                     placeholder="réaliser a partir de ... repas" value="{{ request()->min_order_qte }}">
         </p>
         <p>

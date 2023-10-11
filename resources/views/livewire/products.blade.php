@@ -1,10 +1,10 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
 
-    <div class="text-center mt-2 py-0 mx-auto rounded-full w-4/5"
+    <div class="flex text-center mt-2 py-0 rounded-full w-72 ml-4"
         style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
         <select id="type_id" name="type" wire:model="type_id" wire:change="updateType($event.target.value)"
-            class="placeholder:text-center placeholder:text-sm rounded-full w-3/4 bg-transparent border-0"
+            class="placeholder:text-center placeholder:text-sm rounded-full w-full bg-transparent border-0"
             style="background-color: #bbaf7b;  -webkit-box-shadow: none; box-shadow: none;">
             @foreach ($types as $type_id => $type)
                 <option value="{{ $type_id }}">{{ $type }}</option>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="flex flex-col w-1/2 justify-start font-bold">
-                            <div class="flex justify-start">
+                            {{-- <div class="flex justify-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -46,7 +46,7 @@
                                         {{ ', ' . number_format(distance(request()->latitude, request()->longitude, $product->traitor->latitude, $product->traitor->longitude, 'k'), 0, '', '') . 'km' }}
                                     @endif
                                 </span>
-                            </div>
+                            </div> --}}
                             <div class="flex justify-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -54,6 +54,14 @@
                                         d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
                                 </svg> &nbsp;
                                 {{ $product->name }}
+                            </div>
+                            <div class="flex justify-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
+                                  </svg>
+                                   &nbsp;
+                                {{ $product->nature->name }}
                             </div>
                             <div class="flex justify-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

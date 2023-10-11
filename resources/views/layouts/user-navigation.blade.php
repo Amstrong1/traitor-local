@@ -4,7 +4,15 @@
         <div class="flex justify-between h-24">
             {{-- return icon --}}
             <div class="flex items-center pt-4 -pb-4">
-                @if (request()->routeIs('home.show.product'))
+                @if (request()->routeIs('home.show.product') || request()->routeIs('home.searchproducts'))
+                    <a href="{{ route('home.index') }}">
+                        <span class="[&>svg]:w-7">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                            </svg>
+                        </span>
+                    </a>
                     <button
                         class="sm:block border-0 bg-transparent px-2 text-white hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-white mr-2">
                         @if (session('city') !== null)
