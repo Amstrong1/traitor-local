@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\Traitor\HomeController;
 use App\Http\Controllers\Traitor\FlyerController;
 use App\Http\Controllers\Traitor\OrderController;
@@ -22,6 +23,7 @@ Route::middleware('traitor')->group(function () {
     Route::prefix('traitor')->name('traitor.')->group(function () {
         Route::get('/', [HomeController::class, 'index']);
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+        
 
         Route::match(['get', 'post'], '/orders/allowed', [OrderController::class, 'allowed'])->name('orders.allowed');
         Route::match(['get', 'post'], '/orders/denied', [OrderController::class, 'denied'])->name('orders.denied');
@@ -34,9 +36,14 @@ Route::middleware('traitor')->group(function () {
         Route::resource('/flyers', FlyerController::class);
 
         Route::resource('/products', ProductController::class);
+
+        //calendar
+        Route::match(['get', 'post'],'/calendar', [CalendarController::class, 'index'])->name('orders.calendar');
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    
 });
